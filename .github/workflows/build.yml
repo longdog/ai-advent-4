@@ -40,8 +40,6 @@ jobs:
           context: .
           file: scripts/build/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.branch }}
-          # optional: add 'latest' tag for main branch
           tags: |
             ghcr.io/${{ github.repository }}:${{ steps.vars.outputs.branch }}
             ${{ github.ref_name == 'master' && format('ghcr.io/{0}:latest', github.repository) || '' }}
