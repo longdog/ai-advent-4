@@ -1,13 +1,10 @@
-import { chatWithGigaChat, createGigaChatClient } from "./ai"
+import { chatWithGigaChat, createGigaChatClient, createConversationChain } from "./ai"
 
 // Initialize GigaChat client
 const llm = createGigaChatClient()
 
-// In-memory storage for chat histories (in a real app, you'd use a database)
-const chatHistories = new Map<
-  string,
-  Array<{ role: string; content: string }>
->()
+// In-memory storage for conversation chains (in a real app, you'd use a database)
+const conversationChains = new Map<string, any>()
 
 // Helper function to generate a simple session ID
 function generateSessionId(): string {
@@ -95,26 +92,19 @@ Bun.serve({
       }
 
       console.log("Session ID from cookie:", sessionId)
-      console.log("History", chatHistories)
 
-      if (!sessionId || !chatHistories.has(sessionId)) {
+      if (!sessionId || !conversationChains.has(sessionId)) {
         sessionId = generateSessionId()
-        chatHistories.set(sessionId, [])
+        const chain = createConversationChain(llm)
+        conversationChains.set(sessionId, chain)
       }
 
-      const chatHistory = chatHistories.get(sessionId)!
-
-      // Add user message to history
-      chatHistory.push({ role: "user", content: userMessage })
+      const chain = conversationChains.get(sessionId)!
 
       console.log("User message:", userMessage)
-      console.log("Chat history:", chatHistory)
 
-      // Get AI response
-      const aiResponse = await chatWithGigaChat(llm, chatHistory)
-
-      // Add AI response to history
-      chatHistory.push({ role: "assistant", content: aiResponse })
+      // Get AI response using conversation chain with memory
+      const aiResponse = await chatWithGigaChat(chain, userMessage)
 
       // Prepare response with both messages
       const messagesHtml = formatMessages([
@@ -133,7 +123,7 @@ Bun.serve({
 
     // Handle new chat
     if (url.pathname === "/new-chat" && req.method === "POST") {
-      // Clear chat history for this session
+      // Clear conversation chain for this session
       let sessionId: string | null = null
       const cookieHeader = req.headers.get("cookie")
       if (cookieHeader) {
@@ -146,8 +136,8 @@ Bun.serve({
         }
       }
 
-      if (sessionId && chatHistories.has(sessionId)) {
-        chatHistories.delete(sessionId)
+      if (sessionId && conversationChains.has(sessionId)) {
+        conversationChains.delete(sessionId)
       }
 
       // Return empty chat interface

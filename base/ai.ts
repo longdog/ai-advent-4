@@ -1,6 +1,7 @@
 import { GigaChat } from "langchain-gigachat";
 import { Agent } from "node:https";
-import { HumanMessage, AIMessage } from "langchain/schema";
+import { ConversationChain } from "langchain/chains";
+import { BufferMemory } from "langchain/memory";
 
 // Create GigaChat client
 export function createGigaChatClient() {
@@ -16,20 +17,21 @@ export function createGigaChatClient() {
   return llm;
 }
 
-// Chat function that maintains conversation history
-export async function chatWithGigaChat(llm: any, messages: Array<{role: string, content: string}>) {
-  // Convert messages to LangChain format
-  const langchainMessages = messages.map(msg => {
-    if (msg.role === "user") {
-      return new HumanMessage(msg.content);
-    } else {
-      return new AIMessage(msg.content);
-    }
+// Create conversation chain with memory
+export function createConversationChain(llm: any) {
+  const chain = new ConversationChain({
+    llm: llm,
+    memory: new BufferMemory(),
   });
 
+  return chain;
+}
+
+// Chat function that uses conversation chain with memory
+export async function chatWithGigaChat(chain: any, message: string) {
   try {
-    const response = await llm.invoke(langchainMessages);
-    return response.content;
+    const response = await chain.call({ input: message });
+    return response.response;
   } catch (error) {
     console.error("Error calling GigaChat:", error);
     return "Sorry, I encountered an error processing your request.";
