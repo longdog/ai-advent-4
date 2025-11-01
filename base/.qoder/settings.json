@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "ask": [
+      "Read(!/home/denis/projects/ai-advent-4/base/**)",
+      "Edit(!/home/denis/projects/ai-advent-4/base/**)"
+    ],
+    "allow": [
+      "Read(/home/denis/projects/ai-advent-4/base/**)",
+      "Edit(/home/denis/projects/ai-advent-4/base/**)"
+    ]
+  },
+  "memoryImport": {},
+  "monitoring": {}
+}
