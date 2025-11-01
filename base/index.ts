@@ -1,4 +1,4 @@
-import { createGigaChatClient } from "./ai"
+import { chatWithGigaChat, createGigaChatClient } from "./ai"
 
 // Initialize GigaChat client
 const llm = createGigaChatClient()
@@ -81,9 +81,20 @@ Bun.serve({
         return new Response("Message is required", { status: 400 })
       }
 
-      // Get or create session ID
-      let sessionId = req.headers.get("x-session-id")
-      console.log(sessionId)
+      // Get or create session ID from cookies
+      let sessionId: string | null = null
+      const cookieHeader = req.headers.get("cookie")
+      if (cookieHeader) {
+        const cookies = cookieHeader.split(";").map(cookie => cookie.trim())
+        const sessionCookie = cookies.find(cookie =>
+          cookie.startsWith("session_id="),
+        )
+        if (sessionCookie) {
+          sessionId = sessionCookie.split("=")[1] || null
+        }
+      }
+
+      console.log("Session ID from cookie:", sessionId)
       console.log("History", chatHistories)
 
       if (!sessionId || !chatHistories.has(sessionId)) {
@@ -100,8 +111,7 @@ Bun.serve({
       console.log("Chat history:", chatHistory)
 
       // Get AI response
-      const aiResponse = "aaa"
-      // const aiResponse = await chatWithGigaChat(llm, chatHistory)
+      const aiResponse = await chatWithGigaChat(llm, chatHistory)
 
       // Add AI response to history
       chatHistory.push({ role: "assistant", content: aiResponse })
@@ -112,11 +122,11 @@ Bun.serve({
         { role: "assistant", content: aiResponse },
       ])
 
-      // Set session ID in response header
+      // Set session ID in response cookie
       return new Response(messagesHtml, {
         headers: {
           "Content-Type": "text/html",
-          "X-Session-ID": sessionId,
+          "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
         },
       })
     }
@@ -124,7 +134,18 @@ Bun.serve({
     // Handle new chat
     if (url.pathname === "/new-chat" && req.method === "POST") {
       // Clear chat history for this session
-      const sessionId = req.headers.get("x-session-id")
+      let sessionId: string | null = null
+      const cookieHeader = req.headers.get("cookie")
+      if (cookieHeader) {
+        const cookies = cookieHeader.split(";").map(cookie => cookie.trim())
+        const sessionCookie = cookies.find(cookie =>
+          cookie.startsWith("session_id="),
+        )
+        if (sessionCookie) {
+          sessionId = sessionCookie.split("=")[1] || null
+        }
+      }
+
       if (sessionId && chatHistories.has(sessionId)) {
         chatHistories.delete(sessionId)
       }
@@ -132,7 +153,11 @@ Bun.serve({
       // Return empty chat interface
       const emptyHtml = formatMessages([])
       return new Response(emptyHtml, {
-        headers: { "Content-Type": "text/html" },
+        headers: {
+          "Content-Type": "text/html",
+          "Set-Cookie":
+            "session_id=; Path=/; HttpOnly; SameSite=Strict; Expires=Thu, 01 Jan 1970 00:00:00 GMT",
+        },
       })
     }
 
