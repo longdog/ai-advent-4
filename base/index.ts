@@ -1,15 +1,8 @@
-import { chatWithGigaChat, createGigaChatClient, createConversationChain } from "./ai"
+import { z } from "zod/mini"
+import { chatWithGigaChat, createGigaChatClient } from "./ai"
 
 // Initialize GigaChat client
 const llm = createGigaChatClient()
-
-// In-memory storage for conversation chains (in a real app, you'd use a database)
-const conversationChains = new Map<string, any>()
-
-// Helper function to generate a simple session ID
-function generateSessionId(): string {
-  return Math.random().toString(36).substring(2, 15)
-}
 
 // Helper function to escape HTML
 function escapeHtml(text: string): string {
@@ -19,6 +12,31 @@ function escapeHtml(text: string): string {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;")
+}
+
+const format = z.object({
+  существительное: z.number(),
+  глагол: z.number(),
+  прилагательное: z.number(),
+  наречие: z.number(),
+  местоимение: z.number(),
+  предлог: z.number(),
+  союз: z.number(),
+  частица: z.number(),
+  междометие: z.number(),
+})
+
+function validate(jsonText: string) {
+  console.log("llm output", jsonText)
+
+  const result = format.safeParse(JSON.parse(jsonText))
+
+  if (!result.success) {
+    console.log("Validation failed", result.error)
+    return
+  }
+
+  console.log("Validation passed by ZOD", result.data)
 }
 
 // Helper function to format chat messages as HTML
@@ -42,7 +60,7 @@ function formatMessages(
       } else {
         return `<div class="message ai-message">
                 <div class="font-semibold mb-1">AI Assistant</div>
-                <div>${escapedContent}</div>
+                <div><pre><code class="language-json">${escapedContent}</code></pre></div>
               </div>`
       }
     })
@@ -91,20 +109,12 @@ Bun.serve({
         }
       }
 
-      console.log("Session ID from cookie:", sessionId)
-
-      if (!sessionId || !conversationChains.has(sessionId)) {
-        sessionId = generateSessionId()
-        const chain = createConversationChain(llm)
-        conversationChains.set(sessionId, chain)
-      }
-
-      const chain = conversationChains.get(sessionId)!
-
       console.log("User message:", userMessage)
 
       // Get AI response using conversation chain with memory
-      const aiResponse = await chatWithGigaChat(chain, userMessage)
+      const aiResponse = await chatWithGigaChat(llm, userMessage)
+
+      validate(aiResponse)
 
       // Prepare response with both messages
       const messagesHtml = formatMessages([
@@ -117,36 +127,6 @@ Bun.serve({
         headers: {
           "Content-Type": "text/html",
           "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
-        },
-      })
-    }
-
-    // Handle new chat
-    if (url.pathname === "/new-chat" && req.method === "POST") {
-      // Clear conversation chain for this session
-      let sessionId: string | null = null
-      const cookieHeader = req.headers.get("cookie")
-      if (cookieHeader) {
-        const cookies = cookieHeader.split(";").map(cookie => cookie.trim())
-        const sessionCookie = cookies.find(cookie =>
-          cookie.startsWith("session_id="),
-        )
-        if (sessionCookie) {
-          sessionId = sessionCookie.split("=")[1] || null
-        }
-      }
-
-      if (sessionId && conversationChains.has(sessionId)) {
-        conversationChains.delete(sessionId)
-      }
-
-      // Return empty chat interface
-      const emptyHtml = formatMessages([])
-      return new Response(emptyHtml, {
-        headers: {
-          "Content-Type": "text/html",
-          "Set-Cookie":
-            "session_id=; Path=/; HttpOnly; SameSite=Strict; Expires=Thu, 01 Jan 1970 00:00:00 GMT",
         },
       })
     }

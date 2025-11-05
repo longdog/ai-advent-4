@@ -17,26 +17,7 @@ This is a Bun-based TypeScript project that creates a simple HTTP server listeni
 - **AI Model Provider**: GigaChat
 - **AI SDK**: LangChain.js
 - **LangChain GigaChat Library**: langchain-gigachat
-
-## Development Commands
-
-### Starting the Server
-
-```bash
-bun run index.ts
-```
-
-### Type Checking
-
-```bash
-bunx tsc --noEmit
-```
-
-### Formatting
-
-```bash
-bunx prettier --write .
-```
+- **Library for structure Output**: zod
 
 ## Project Structure
 
