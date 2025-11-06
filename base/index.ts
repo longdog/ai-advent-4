@@ -1,4 +1,11 @@
-import { chatWithGigaChat, createGigaChatClient, createConversationChain } from "./ai"
+import {
+  chatWithGigaChat,
+  createConversationChain,
+  createGigaChatClient,
+} from "./ai"
+
+import markdownit from "markdown-it"
+const md = markdownit()
 
 // Initialize GigaChat client
 const llm = createGigaChatClient()
@@ -24,31 +31,35 @@ function escapeHtml(text: string): string {
 // Helper function to format chat messages as HTML
 function formatMessages(
   messages: Array<{ role: string; content: string }>,
+  hideForm: boolean,
 ): string {
   if (messages.length === 0) {
     return `<div class="text-center text-gray-500 py-8">
               <p>Start a conversation with the AI assistant</p>
             </div>`
   }
-
+  const formAttribute = hideForm ? 'data-hide-form="true"' : ""
   return messages
     .map(msg => {
       const escapedContent = escapeHtml(msg.content)
       if (msg.role === "user") {
         return `<div class="message user-message">
-                <div class="font-semibold mb-1">You</div>
+                <div class="font-semibold mb-1">Вы</div>
                 <div>${escapedContent}</div>
               </div>`
       } else {
-        return `<div class="message ai-message">
-                <div class="font-semibold mb-1">AI Assistant</div>
-                <div>${escapedContent}</div>
+        return `<div class="message ai-message" ${formAttribute}>
+                <div class="font-semibold mb-1">AI</div>
+                <div>${toMarkdown(escapedContent)}</div>
               </div>`
       }
     })
     .join("")
 }
 
+function toMarkdown(text: string) {
+  return md.render(text)
+}
 console.log("Starting server on http://localhost:5555")
 
 Bun.serve({
@@ -100,6 +111,10 @@ Bun.serve({
       }
 
       const chain = conversationChains.get(sessionId)!
+      console.log(
+        "Conversation chain:",
+        chain?.memory?.chatHistory?.messages?.map(msg => msg.content),
+      )
 
       console.log("User message:", userMessage)
 
@@ -107,10 +122,13 @@ Bun.serve({
       const aiResponse = await chatWithGigaChat(chain, userMessage)
 
       // Prepare response with both messages
-      const messagesHtml = formatMessages([
-        { role: "user", content: userMessage },
-        { role: "assistant", content: aiResponse },
-      ])
+      const messagesHtml = formatMessages(
+        [
+          { role: "user", content: userMessage },
+          { role: "assistant", content: aiResponse },
+        ],
+        aiResponse.includes("КОНЕЦ"),
+      )
 
       // Set session ID in response cookie
       return new Response(messagesHtml, {
@@ -140,13 +158,21 @@ Bun.serve({
         conversationChains.delete(sessionId)
       }
 
-      // Return empty chat interface
-      const emptyHtml = formatMessages([])
-      return new Response(emptyHtml, {
+      sessionId = generateSessionId()
+      const chain = createConversationChain(llm)
+      conversationChains.set(sessionId, chain)
+
+      const aiResponse = await chatWithGigaChat(chain, "")
+
+      // Prepare response with both messages
+      const messagesHtml = formatMessages(
+        [{ role: "assistant", content: aiResponse }],
+        false,
+      )
+      return new Response(messagesHtml, {
         headers: {
           "Content-Type": "text/html",
-          "Set-Cookie":
-            "session_id=; Path=/; HttpOnly; SameSite=Strict; Expires=Thu, 01 Jan 1970 00:00:00 GMT",
+          "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
         },
       })
     }
