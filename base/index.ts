@@ -1,25 +1,11 @@
-import {
-  chatWithGigaChat,
-  createConversationChain,
-  createGigaChatClient,
-} from "./ai"
+import { chatWithGigaChat, createGigaChatClient, systemPrompts } from "./ai"
 
 import markdownit from "markdown-it"
 const md = markdownit()
 
-// Initialize GigaChat client
-const llm = createGigaChatClient()
-
-// In-memory storage for conversation chains (in a real app, you'd use a database)
-const conversationChains = new Map<string, any>()
-
-// Helper function to generate a simple session ID
-function generateSessionId(): string {
-  return Math.random().toString(36).substring(2, 15)
-}
-
 // Helper function to escape HTML
 function escapeHtml(text: string): string {
+  if (!text) return ""
   return text
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -27,7 +13,12 @@ function escapeHtml(text: string): string {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;")
 }
-
+function sseEncode(html: string) {
+  // Escape literal newlines inside HTML for SSE framing
+  return html
+    .replace(/\n/g, "") // remove or collapse newlines
+    .replace(/\r/g, "")
+}
 // Helper function to format chat messages as HTML
 function formatMessages(
   messages: Array<{ role: string; content: string }>,
@@ -49,7 +40,7 @@ function formatMessages(
               </div>`
       } else {
         return `<div class="message ai-message" ${formAttribute}>
-                <div class="font-semibold mb-1">AI</div>
+                <div class="font-semibold mb-1">${msg.role}</div>
                 <div>${toMarkdown(escapedContent)}</div>
               </div>`
       }
@@ -60,10 +51,49 @@ function formatMessages(
 function toMarkdown(text: string) {
   return md.render(text)
 }
+
+async function* chat(question: string) {
+  const answers = []
+  for (const systemPrompt of systemPrompts.slice(0, -1)) {
+    const llm = createGigaChatClient(
+      systemPrompt.expert,
+      systemPrompt.temperature,
+    )
+    const response = await chatWithGigaChat(
+      llm,
+      systemPrompt.prompt || answers.at(-1)?.answer || " ",
+      question,
+    )
+    // const response = "aaa"
+    answers.push({ expert: systemPrompt.expert, answer: response })
+    yield { expert: systemPrompt.expert, answer: response }
+    await Bun.sleep(2000)
+  }
+  const llm = createGigaChatClient(
+    systemPrompts.at(-1)!.expert,
+    systemPrompts.at(-1)!.temperature,
+  )
+  const response = await chatWithGigaChat(
+    llm,
+    systemPrompts.at(-1)!.prompt,
+    `Вопрос: ${question}
+  Ответы от llm:
+  ${answers
+    .filter(answer => !answer.expert.includes("prompt"))
+    .map(answer => `**${answer.expert}**: ${answer.answer}`)
+    .join("\n\n")}
+  `,
+  )
+
+  // const response = "aaa"
+  yield { expert: systemPrompts.at(-1)!.expert, answer: response || " " }
+}
+
 console.log("Starting server on http://localhost:5555")
 
 Bun.serve({
   port: 5555,
+  idleTimeout: 0,
   async fetch(req) {
     const url = new URL(req.url)
 
@@ -81,98 +111,53 @@ Bun.serve({
     }
 
     // Handle chat messages
-    if (url.pathname === "/chat" && req.method === "POST") {
-      const formData = await req.formData()
-      const userMessage = formData.get("message") as string
-
+    if (url.pathname === "/chat-stream" && req.method === "GET") {
+      // const formData = await req.formData()
+      // const userMessage = formData.get("message") as string
+      const userMessage = url.searchParams.get("message")
       if (!userMessage) {
         return new Response("Message is required", { status: 400 })
       }
 
-      // Get or create session ID from cookies
-      let sessionId: string | null = null
-      const cookieHeader = req.headers.get("cookie")
-      if (cookieHeader) {
-        const cookies = cookieHeader.split(";").map(cookie => cookie.trim())
-        const sessionCookie = cookies.find(cookie =>
-          cookie.startsWith("session_id="),
-        )
-        if (sessionCookie) {
-          sessionId = sessionCookie.split("=")[1] || null
-        }
-      }
-
-      console.log("Session ID from cookie:", sessionId)
-
-      if (!sessionId || !conversationChains.has(sessionId)) {
-        sessionId = generateSessionId()
-        const chain = createConversationChain(llm)
-        conversationChains.set(sessionId, chain)
-      }
-
-      const chain = conversationChains.get(sessionId)!
-      console.log(
-        "Conversation chain:",
-        chain?.memory?.chatHistory?.messages?.map(msg => msg.content),
-      )
-
       console.log("User message:", userMessage)
+      const stream = new ReadableStream({
+        async start(controller) {
+          const encoder = new TextEncoder()
 
-      // Get AI response using conversation chain with memory
-      const aiResponse = await chatWithGigaChat(chain, userMessage)
+          // Stream each message chunk from your LLM or generator
+          for await (const { expert, answer } of chat(userMessage)) {
+            const htmlChunk = formatMessages(
+              [{ role: expert, content: answer }],
+              false,
+            )
 
-      // Prepare response with both messages
-      const messagesHtml = formatMessages(
-        [
-          { role: "user", content: userMessage },
-          { role: "assistant", content: aiResponse },
-        ],
-        aiResponse.includes("КОНЕЦ"),
-      )
-
-      // Set session ID in response cookie
-      return new Response(messagesHtml, {
+            // const oob = `${htmlChunk}`
+            // controller.enqueue(encoder.encode(oob))
+            controller.enqueue(
+              encoder.encode(`data: ${sseEncode(htmlChunk)}\n\n`),
+            )
+            // Flush after each chunk
+            await new Promise(r => setTimeout(r, 10))
+          }
+          controller.enqueue(encoder.encode(`event: end\ndata: done\n\n`))
+          controller.close()
+        },
+      })
+      // Stream response
+      return new Response(stream, {
         headers: {
-          "Content-Type": "text/html",
-          "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
+          "Content-Type": "text/event-stream",
+          "Cache-Control": "no-cache",
+          Connection: "keep-alive",
         },
       })
     }
 
     // Handle new chat
     if (url.pathname === "/new-chat" && req.method === "POST") {
-      // Clear conversation chain for this session
-      let sessionId: string | null = null
-      const cookieHeader = req.headers.get("cookie")
-      if (cookieHeader) {
-        const cookies = cookieHeader.split(";").map(cookie => cookie.trim())
-        const sessionCookie = cookies.find(cookie =>
-          cookie.startsWith("session_id="),
-        )
-        if (sessionCookie) {
-          sessionId = sessionCookie.split("=")[1] || null
-        }
-      }
-
-      if (sessionId && conversationChains.has(sessionId)) {
-        conversationChains.delete(sessionId)
-      }
-
-      sessionId = generateSessionId()
-      const chain = createConversationChain(llm)
-      conversationChains.set(sessionId, chain)
-
-      const aiResponse = await chatWithGigaChat(chain, "")
-
-      // Prepare response with both messages
-      const messagesHtml = formatMessages(
-        [{ role: "assistant", content: aiResponse }],
-        false,
-      )
-      return new Response(messagesHtml, {
+      return new Response("", {
         headers: {
           "Content-Type": "text/html",
-          "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
         },
       })
     }

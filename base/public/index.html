@@ -11,25 +11,23 @@
 </head>
 
 <body class="bg-gray-100 min-h-screen">
-    <div class="container mx-auto max-w-2xl py-8" hx-post="/new-chat" hx-trigger="load" hx-target="#chat-history"
-        hx-swap="beforeend">
+    <div class="container mx-auto max-w-2xl py-8">
         <header class="mb-8 text-center">
-            <h1 class="text-3xl font-bold text-gray-800">AI Театральный ассистент</h1>
+            <h1 class="text-3xl font-bold text-gray-800">AI Совет экспертов</h1>
             <button hx-post="/new-chat" hx-target="#chat-history" hx-swap="innerHTML"
                 class="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors">
-                Новый этюд
+                Новый вопрос
             </button>
         </header>
 
         <div id="chat-history" class="bg-white rounded-lg shadow-md p-6 mb-4 h-[60vh] overflow-y-auto">
             <!-- Chat messages will be displayed here -->
             <div class="text-center text-gray-500 py-8">
-                <p>Я помогаю придумывать сценарии к театральным этюдам</p>
+                <p>Совет экспертов</p>
             </div>
         </div>
 
-        <form id="chat-form" hx-post="/chat" hx-target="#chat-history" hx-swap="beforeend"
-            hx-on:htmx:after-request="this.reset()">
+        <form id="chat-form">
             <div class="flex gap-2">
                 <input type="text" name="message" placeholder="Напишите ответ..."
                     class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -43,23 +41,38 @@
     </div>
 
     <script>
-        document.body.addEventListener('htmx:afterSwap', function (evt) {
-            // Check if the response contains the hide form attribute
-            const responseElement=evt.detail.target;
-            const hideForm=responseElement.querySelector('[data-hide-form]');
-
-            const chatForm=document.getElementById('chat-form');
-            if (chatForm) {
-                // Hide or show form based on the presence of data-hide-form
-                chatForm.style.display=hideForm? 'none':'block';
-            }
-        });
 
         // Scroll to bottom of chat history
         htmx.on("htmx:afterSwap", function (evt) {
             const chatHistory=document.getElementById("chat-history");
             chatHistory.scrollTop=chatHistory.scrollHeight;
         });
+        document.querySelector('#chat-form').addEventListener('submit', (e) => {
+            e.preventDefault() // 🚫 prevent real POST
+
+            const form=e.target
+            startChatStream(form)
+        })
+        function startChatStream(form) {
+            const message=form.querySelector('[name=message]').value
+            form.reset()
+
+            // Create SSE connection
+            const evtSource=new EventSource(`/chat-stream?message=${encodeURIComponent(message)}`)
+            const chatHistory=document.querySelector('#chat-history')
+            chatHistory.insertAdjacentHTML('beforeend', `<p class="text-gray-500 mb-2">${message}</p>`)
+            chatHistory.scrollTop=chatHistory.scrollHeight;
+            evtSource.addEventListener('message', (e) => {
+                chatHistory.insertAdjacentHTML('beforeend', e.data)
+                chatHistory.scrollTop=chatHistory.scrollHeight;
+            })
+
+            evtSource.addEventListener('end', () => {
+                console.log("CLOSE");
+
+                evtSource.close()
+            })
+        }
     </script>
 </body>
 
