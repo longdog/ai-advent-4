@@ -26,7 +26,7 @@ function formatMessages(
 ): string {
   if (messages.length === 0) {
     return `<div class="text-center text-gray-500 py-8">
-              <p>Start a conversation with the AI assistant</p>
+              <p>Начните диалог с AI помощником</p>
             </div>`
   }
   const formAttribute = hideForm ? 'data-hide-form="true"' : ""
@@ -34,12 +34,12 @@ function formatMessages(
     .map(msg => {
       const escapedContent = escapeHtml(msg.content)
       if (msg.role === "user") {
-        return `<div class="message user-message">
+        return `<div class="message user-message mb-5">
                 <div class="font-semibold mb-1">Вы</div>
                 <div>${escapedContent}</div>
               </div>`
       } else {
-        return `<div class="message ai-message" ${formAttribute}>
+        return `<div class="message ai-message mb-5" ${formAttribute}>
                 <div class="font-semibold mb-1">${msg.role}</div>
                 <div>${toMarkdown(escapedContent)}</div>
               </div>`
@@ -59,12 +59,7 @@ async function* chat(question: string) {
       systemPrompt.expert,
       systemPrompt.temperature,
     )
-    const response = await chatWithGigaChat(
-      llm,
-      systemPrompt.prompt || answers.at(-1)?.answer || " ",
-      question,
-    )
-    // const response = "aaa"
+    const response = await chatWithGigaChat(llm, systemPrompt.prompt, question)
     answers.push({ expert: systemPrompt.expert, answer: response })
     yield { expert: systemPrompt.expert, answer: response }
     await Bun.sleep(2000)
@@ -76,7 +71,7 @@ async function* chat(question: string) {
   const response = await chatWithGigaChat(
     llm,
     systemPrompts.at(-1)!.prompt,
-    `Вопрос: ${question}
+    `Вопросы: ${question}
   Ответы от llm:
   ${answers
     .filter(answer => !answer.expert.includes("prompt"))
@@ -85,7 +80,6 @@ async function* chat(question: string) {
   `,
   )
 
-  // const response = "aaa"
   yield { expert: systemPrompts.at(-1)!.expert, answer: response || " " }
 }
 
@@ -112,8 +106,6 @@ Bun.serve({
 
     // Handle chat messages
     if (url.pathname === "/chat-stream" && req.method === "GET") {
-      // const formData = await req.formData()
-      // const userMessage = formData.get("message") as string
       const userMessage = url.searchParams.get("message")
       if (!userMessage) {
         return new Response("Message is required", { status: 400 })
@@ -131,8 +123,6 @@ Bun.serve({
               false,
             )
 
-            // const oob = `${htmlChunk}`
-            // controller.enqueue(encoder.encode(oob))
             controller.enqueue(
               encoder.encode(`data: ${sseEncode(htmlChunk)}\n\n`),
             )

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Театральный ассистент</title>
+    <title>AI Advent Challenge #4</title>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/style.css">
@@ -13,7 +13,7 @@
 <body class="bg-gray-100 min-h-screen">
     <div class="container mx-auto max-w-2xl py-8">
         <header class="mb-8 text-center">
-            <h1 class="text-3xl font-bold text-gray-800">AI Совет экспертов</h1>
+            <h1 class="text-3xl font-bold text-gray-800">AI Проверка температуры</h1>
             <button hx-post="/new-chat" hx-target="#chat-history" hx-swap="innerHTML"
                 class="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors">
                 Новый вопрос
@@ -23,13 +23,13 @@
         <div id="chat-history" class="bg-white rounded-lg shadow-md p-6 mb-4 h-[60vh] overflow-y-auto">
             <!-- Chat messages will be displayed here -->
             <div class="text-center text-gray-500 py-8">
-                <p>Совет экспертов</p>
+                <p>Напишите вопрос</p>
             </div>
         </div>
 
         <form id="chat-form">
             <div class="flex gap-2">
-                <input type="text" name="message" placeholder="Напишите ответ..."
+                <input type="text" name="message" placeholder="Вопрос..."
                     class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required>
                 <button type="submit"
