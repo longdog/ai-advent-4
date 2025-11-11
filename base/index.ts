@@ -1,4 +1,9 @@
-import { chatWithLLM, createGigaChatClient, systemPrompts } from "./ai"
+import {
+  chatWithLLM,
+  createGigaChatClient,
+  createGroqChatClient,
+  systemPrompts,
+} from "./ai"
 
 import markdownit from "markdown-it"
 const md = markdownit()
@@ -55,7 +60,7 @@ function toMarkdown(text: string) {
 async function* chat(question: string) {
   const answers = []
   for (const systemPrompt of systemPrompts.slice(0, -1)) {
-    const llm = createGigaChatClient(
+    const llm = createGroqChatClient(
       systemPrompt.expert,
       systemPrompt.temperature,
     )
