@@ -4,7 +4,10 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "langchain": "^0.1.0",
+    "@langchain/community": "^1.0.2",
+    "@langchain/core": "^1.0.4",
+    "@langchain/groq": "^1.0.0",
+    "langchain": "^1.0.4",
     "langchain-gigachat": "^0.0.14",
     "markdown-it": "^14.1.0"
   },

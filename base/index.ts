@@ -1,4 +1,4 @@
-import { chatWithGigaChat, createGigaChatClient, systemPrompts } from "./ai"
+import { chatWithLLM, createGigaChatClient, systemPrompts } from "./ai"
 
 import markdownit from "markdown-it"
 const md = markdownit()
@@ -59,28 +59,49 @@ async function* chat(question: string) {
       systemPrompt.expert,
       systemPrompt.temperature,
     )
-    const response = await chatWithGigaChat(llm, systemPrompt.prompt, question)
-    answers.push({ expert: systemPrompt.expert, answer: response })
-    yield { expert: systemPrompt.expert, answer: response }
+    const start = Date.now()
+    const response = await chatWithLLM(llm, systemPrompt.prompt, question)
+
+    const time = Date.now() - start
+    const tokens = response.usage_metadata.total_tokens
+
+    answers.push({
+      expert: systemPrompt.expert,
+      answer: response.content,
+      tokens,
+      time,
+    })
+    yield {
+      expert: systemPrompt.expert,
+      answer: response.content,
+      tokens,
+      time,
+    }
     await Bun.sleep(2000)
   }
   const llm = createGigaChatClient(
     systemPrompts.at(-1)!.expert,
     systemPrompts.at(-1)!.temperature,
   )
-  const response = await chatWithGigaChat(
+  const response = await chatWithLLM(
     llm,
     systemPrompts.at(-1)!.prompt,
     `Вопросы: ${question}
   Ответы от llm:
   ${answers
     .filter(answer => !answer.expert.includes("prompt"))
-    .map(answer => `**${answer.expert}**: ${answer.answer}`)
+    .map(
+      answer =>
+        `**${answer.expert}**: ${answer.answer}, tokens: ${answer.tokens}, time: ${answer.time}ms`,
+    )
     .join("\n\n")}
   `,
   )
 
-  yield { expert: systemPrompts.at(-1)!.expert, answer: response || " " }
+  yield {
+    expert: systemPrompts.at(-1)!.expert,
+    answer: response.content || " ",
+  }
 }
 
 console.log("Starting server on http://localhost:5555")
@@ -117,9 +138,20 @@ Bun.serve({
           const encoder = new TextEncoder()
 
           // Stream each message chunk from your LLM or generator
-          for await (const { expert, answer } of chat(userMessage)) {
+          for await (const { expert, answer, tokens, time } of chat(
+            userMessage,
+          )) {
             const htmlChunk = formatMessages(
-              [{ role: expert, content: answer }],
+              [
+                {
+                  role: expert,
+                  content:
+                    answer +
+                    (tokens && time
+                      ? `\n\ntokens: ${tokens}\n\nresponse time: ${time}`
+                      : ""),
+                },
+              ],
               false,
             )
 

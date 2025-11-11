@@ -1,5 +1,6 @@
+import { ChatGroq } from "@langchain/groq"
+import { HumanMessage, SystemMessage } from "langchain"
 import { GigaChat } from "langchain-gigachat"
-import { HumanMessage, SystemMessage } from "langchain/schema"
 import { Agent } from "node:https"
 
 const question = `
@@ -10,26 +11,38 @@ const systemPrompt1 = `
 Ты - умный помощник`
 
 const systemPrompt2 = `
-Ты - анализатор ответов от llm. Нескольким llm с разной температурой в настройках дали один и тот же вопрос и получили несколько ответов.
-- Сравни результаты (точность, креативность, разнообразие)
-- Сформулируй, для каких задач лучше подходит каждая температура
+Ты - анализатор ответов от разных моделей. Нескольким моделям дали один и тот же вопрос и получили несколько ответов.
+- Сравни качество ответов моделей
+- Сравни количество токенов в ответах
+- Сравни скорость ответов моделей
 `
 
 export const systemPrompts = [
   {
     prompt: systemPrompt1,
-    expert: "умный помощник с температурой 0",
-    temperature: 0,
-  },
-  {
-    prompt: systemPrompt1,
-    expert: "умный помощник с температурой 0.7",
+    expert: "allam-2-7b",
     temperature: 0.7,
   },
   {
     prompt: systemPrompt1,
-    expert: "умный помощник с температурой 1.2",
-    temperature: 1.2,
+    expert: "meta-llama/llama-4-scout-17b-16e-instruct",
+    temperature: 0.7,
+  },
+  {
+    prompt: systemPrompt1,
+    expert: "moonshotai/kimi-k2-instruct",
+    temperature: 0.7,
+  },
+
+  {
+    prompt: systemPrompt1,
+    expert: "openai/gpt-oss-20b",
+    temperature: 0.7,
+  },
+  {
+    prompt: systemPrompt1,
+    expert: "qwen/qwen3-32b",
+    temperature: 0.7,
   },
   {
     prompt: systemPrompt2,
@@ -53,7 +66,15 @@ export function createGigaChatClient(name: string, temperature: number) {
   return llm
 }
 
-export async function chatWithGigaChat(
+export function createGroqChatClient(name: string, temperature: number) {
+  const llm = new ChatGroq({
+    model: name,
+    temperature,
+  })
+  return llm
+}
+
+export async function chatWithLLM(
   llm: any,
   systemPrompt: string,
   message: string,
@@ -61,7 +82,7 @@ export async function chatWithGigaChat(
   try {
     const prompt = [new SystemMessage(systemPrompt), new HumanMessage(message)]
     const res = await llm.invoke(prompt)
-    return res.content
+    return res
   } catch (error) {
     console.error("Error calling GigaChat:", error)
     return "Sorry, I encountered an error processing your request."
