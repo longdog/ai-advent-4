@@ -1,9 +1,4 @@
-import {
-  chatWithLLM,
-  createGigaChatClient,
-  createGroqChatClient,
-  systemPrompts,
-} from "./ai"
+import { chatWithLLM, createGroqChatClient, systemPrompts } from "./ai"
 
 import markdownit from "markdown-it"
 const md = markdownit()
@@ -59,16 +54,23 @@ function toMarkdown(text: string) {
 
 async function* chat(question: string) {
   const answers = []
-  for (const systemPrompt of systemPrompts.slice(0, -1)) {
+  for (const systemPrompt of systemPrompts) {
+    // const llm = createGigaChatClient(
     const llm = createGroqChatClient(
       systemPrompt.expert,
+      systemPrompt.model,
       systemPrompt.temperature,
+      systemPrompt.maxTokens,
     )
     const start = Date.now()
-    const response = await chatWithLLM(llm, systemPrompt.prompt, question)
+    const response = await chatWithLLM(
+      llm,
+      systemPrompt.prompt,
+      systemPrompt.userPrompt,
+    )
 
     const time = Date.now() - start
-    const tokens = response.usage_metadata.total_tokens
+    const tokens = `Input: ${response.usage_metadata.input_tokens} Output: ${response.usage_metadata.output_tokens}, Total: ${response.usage_metadata.total_tokens}`
 
     answers.push({
       expert: systemPrompt.expert,
@@ -83,29 +85,6 @@ async function* chat(question: string) {
       time,
     }
     await Bun.sleep(2000)
-  }
-  const llm = createGigaChatClient(
-    systemPrompts.at(-1)!.expert,
-    systemPrompts.at(-1)!.temperature,
-  )
-  const response = await chatWithLLM(
-    llm,
-    systemPrompts.at(-1)!.prompt,
-    `Вопросы: ${question}
-  Ответы от llm:
-  ${answers
-    .filter(answer => !answer.expert.includes("prompt"))
-    .map(
-      answer =>
-        `**${answer.expert}**: ${answer.answer}, tokens: ${answer.tokens}, time: ${answer.time}ms`,
-    )
-    .join("\n\n")}
-  `,
-  )
-
-  yield {
-    expert: systemPrompts.at(-1)!.expert,
-    answer: response.content || " ",
   }
 }
 
@@ -132,20 +111,12 @@ Bun.serve({
 
     // Handle chat messages
     if (url.pathname === "/chat-stream" && req.method === "GET") {
-      const userMessage = url.searchParams.get("message")
-      if (!userMessage) {
-        return new Response("Message is required", { status: 400 })
-      }
-
-      console.log("User message:", userMessage)
       const stream = new ReadableStream({
         async start(controller) {
           const encoder = new TextEncoder()
 
           // Stream each message chunk from your LLM or generator
-          for await (const { expert, answer, tokens, time } of chat(
-            userMessage,
-          )) {
+          for await (const { expert, answer, tokens, time } of chat("")) {
             const htmlChunk = formatMessages(
               [
                 {
@@ -153,7 +124,7 @@ Bun.serve({
                   content:
                     answer +
                     (tokens && time
-                      ? `\n\ntokens: ${tokens}\n\nresponse time: ${time}`
+                      ? `\n\n${tokens}\n\nresponse time: ${time}`
                       : ""),
                 },
               ],

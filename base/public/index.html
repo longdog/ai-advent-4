@@ -23,18 +23,14 @@
         <div id="chat-history" class="bg-white rounded-lg shadow-md p-6 mb-4 h-[60vh] overflow-y-auto">
             <!-- Chat messages will be displayed here -->
             <div class="text-center text-gray-500 py-8">
-                <p>Напишите вопрос</p>
             </div>
         </div>
 
         <form id="chat-form">
             <div class="flex gap-2">
-                <input type="text" name="message" placeholder="Вопрос..."
-                    class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
                 <button type="submit"
                     class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
-                    Отправить
+                    Начать
                 </button>
             </div>
         </form>
@@ -54,13 +50,11 @@
             startChatStream(form)
         })
         function startChatStream(form) {
-            const message=form.querySelector('[name=message]').value
             form.reset()
 
             // Create SSE connection
-            const evtSource=new EventSource(`/chat-stream?message=${encodeURIComponent(message)}`)
+            const evtSource=new EventSource(`/chat-stream`)
             const chatHistory=document.querySelector('#chat-history')
-            chatHistory.insertAdjacentHTML('beforeend', `<p class="text-gray-500 mb-2">${message}</p>`)
             chatHistory.scrollTop=chatHistory.scrollHeight;
             evtSource.addEventListener('message', (e) => {
                 chatHistory.insertAdjacentHTML('beforeend', e.data)
