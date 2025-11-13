@@ -11,7 +11,7 @@ import {
 } from "langchain"
 import { GigaChat } from "langchain-gigachat"
 import { Agent } from "node:https"
-import { summaryPrompt, systemPrompt } from "./prompts"
+import { systemPrompt } from "./prompts"
 
 const checkpointer = new MemorySaver()
 
@@ -44,7 +44,7 @@ export type Chat = ReturnType<typeof createChat>
 
 export function createGigaChatClient(withSummary = true) {
   const model = new GigaChat({
-    model: "GigaChat-Pro",
+    model: "GigaChat",
     httpsAgent,
     credentials: process.env.GIGACHAT_API_KEY,
   })
@@ -74,47 +74,52 @@ export function createGigaChatClient(withSummary = true) {
   const agent = createAgent({
     model,
     checkpointer,
-    middleware: withSummary
-      ? [
-          summarizationMiddleware({
-            model: summarizationModel,
-            trigger: { messages: 5 },
-            keep: { messages: 3 },
-            summaryPrompt,
-          }),
-        ]
-      : [],
+    systemPrompt,
+    middleware: [
+      summarizationMiddleware({
+        model: summarizationModel,
+        trigger: { messages: 6 },
+        keep: { messages: 4 },
+      }),
+    ],
   })
   return agent
 }
 
-export async function chatWithAgent(agent: ReactAgent, chat: Chat) {
-  const totalTokensBefore = countTokensApproximately(chat.history)
-  // console.log("HISTORY", chat)
-
-  const result = await agent.invoke({
-    messages: chat.history,
+export async function chatWithAgent(
+  agent: ReactAgent,
+  chatId: string,
+  message: string,
+) {
+  const history = await checkpointer.get({
+    configurable: { thread_id: chatId },
   })
+  const prevMessages = history?.channel_values?.messages || []
+  const tokensBefore = countTokensApproximately(prevMessages)
+  // console.log("HISTORY FROM CHECKPOINTER", prevMessages)
+
+  const result = await agent.invoke(
+    {
+      messages: message,
+    },
+    {
+      configurable: { thread_id: chatId },
+    },
+  )
 
   const resultMessages = result.messages
   // console.log("RESULT", resultMessages)
 
   const totalTokensAfter = countTokensApproximately(resultMessages)
   const systemMessage = resultMessages[0]
-  if (resultMessages.length < chat.history.length) {
-    console.log("SUMMARIZATION TRIGGERED")
-    console.log("SUMMARIZATION MESSAGE")
-    console.log(systemMessage.content)
-    console.log("SUMMARIZATION INFO")
-    console.log(
-      `Number of messages before summarization: ${chat.history.length}`,
-    )
+  const systemContent =
+    typeof systemMessage?.content === "string" ? systemMessage.content : ""
+  if (systemContent.includes("summary")) {
+    console.log("SUMMARIZATION")
     console.log(
       `Number of messages after summarization: ${resultMessages.length}`,
     )
-    console.log(`Tokens before summarization: ${totalTokensBefore}`)
     console.log(`Tokens after summarization: ${totalTokensAfter}`)
   }
-  chat.update(resultMessages)
-  return resultMessages.at(-1).content || ""
+  return resultMessages?.at(-1)?.content || ""
 }

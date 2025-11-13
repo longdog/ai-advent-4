@@ -1,5 +1,5 @@
 import markdownit from "markdown-it"
-import { chatWithAgent, createChat, createGigaChatClient } from "./llm"
+import { chatWithAgent, createGigaChatClient } from "./llm"
 const md = markdownit()
 
 // Initialize GigaChat client
@@ -109,14 +109,13 @@ Bun.serve({
       if (!sessionId) {
         return new Response("Session not found", { status: 404 })
       }
-      const history = conversationChains.get(sessionId)
-      if (!history) {
-        return new Response("Chat not found", { status: 404 })
-      }
 
-      history.addHumanMessage(userMessage)
       // Get AI response using conversation chain with memory
-      const aiResponse = await chatWithAgent(llmSummary, history)
+      const aiResponse = (await chatWithAgent(
+        llmSummary,
+        sessionId,
+        userMessage,
+      )) as string
 
       // Prepare response with both messages
       const messagesHtml = formatMessages(
@@ -156,10 +155,12 @@ Bun.serve({
       }
 
       sessionId = generateSessionId()
-      const chat = createChat(sessionId)
-      conversationChains.set(sessionId, chat)
 
-      const aiResponse = await chatWithAgent(llmSummary, chat)
+      const aiResponse = (await chatWithAgent(
+        llmSummary,
+        sessionId,
+        "",
+      )) as string
 
       // Prepare response with both messages
       const messagesHtml = formatMessages(
