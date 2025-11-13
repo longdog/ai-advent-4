@@ -1,12 +1,12 @@
-import { GigaChat } from "langchain-gigachat"
-import { ConversationChain } from "langchain/chains"
-import { BufferMemory } from "langchain/memory"
 import {
   ChatPromptTemplate,
   HumanMessagePromptTemplate,
   MessagesPlaceholder,
   SystemMessagePromptTemplate,
-} from "langchain/prompts"
+} from "langchain"
+import { GigaChat } from "langchain-gigachat"
+import { ConversationChain } from "langchain/chains"
+import { BufferMemory } from "langchain/memory"
 import { Agent } from "node:https"
 
 const systemPrompt = `

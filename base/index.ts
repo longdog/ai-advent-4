@@ -1,14 +1,10 @@
-import {
-  chatWithGigaChat,
-  createConversationChain,
-  createGigaChatClient,
-} from "./ai"
-
 import markdownit from "markdown-it"
+import { chatWithAgent, createChat, createGigaChatClient } from "./llm"
 const md = markdownit()
 
 // Initialize GigaChat client
-const llm = createGigaChatClient()
+const llmNotSummary = createGigaChatClient(false)
+const llmSummary = createGigaChatClient(true)
 
 // In-memory storage for conversation chains (in a real app, you'd use a database)
 const conversationChains = new Map<string, any>()
@@ -104,22 +100,23 @@ Bun.serve({
 
       console.log("Session ID from cookie:", sessionId)
 
-      if (!sessionId || !conversationChains.has(sessionId)) {
-        sessionId = generateSessionId()
-        const chain = createConversationChain(llm)
-        conversationChains.set(sessionId, chain)
+      // if (!sessionId || !conversationChains.has(sessionId)) {
+      //   sessionId = generateSessionId()
+      //   const chat = createChat(sessionId)
+      //   conversationChains.set(sessionId, chat)
+      // }
+
+      if (!sessionId) {
+        return new Response("Session not found", { status: 404 })
+      }
+      const history = conversationChains.get(sessionId)
+      if (!history) {
+        return new Response("Chat not found", { status: 404 })
       }
 
-      const chain = conversationChains.get(sessionId)!
-      console.log(
-        "Conversation chain:",
-        chain?.memory?.chatHistory?.messages?.map(msg => msg.content),
-      )
-
-      console.log("User message:", userMessage)
-
+      history.addHumanMessage(userMessage)
       // Get AI response using conversation chain with memory
-      const aiResponse = await chatWithGigaChat(chain, userMessage)
+      const aiResponse = await chatWithAgent(llmSummary, history)
 
       // Prepare response with both messages
       const messagesHtml = formatMessages(
@@ -159,10 +156,10 @@ Bun.serve({
       }
 
       sessionId = generateSessionId()
-      const chain = createConversationChain(llm)
-      conversationChains.set(sessionId, chain)
+      const chat = createChat(sessionId)
+      conversationChains.set(sessionId, chat)
 
-      const aiResponse = await chatWithGigaChat(chain, "")
+      const aiResponse = await chatWithAgent(llmSummary, chat)
 
       // Prepare response with both messages
       const messagesHtml = formatMessages(

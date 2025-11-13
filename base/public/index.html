@@ -31,7 +31,7 @@
         <form id="chat-form" hx-post="/chat" hx-target="#chat-history" hx-swap="beforeend"
             hx-on:htmx:after-request="this.reset()">
             <div class="flex gap-2">
-                <input type="text" name="message" placeholder="Напишите ответ..."
+                <input type="text" name="message" placeholder="Напишите запрос..."
                     class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required>
                 <button type="submit"
