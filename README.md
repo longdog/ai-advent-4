@@ -8,3 +8,4 @@
 - [День 6. Версии моделей](https://github.com/longdog/ai-advent-4/tree/day6/)
 - [День 7. Работа с токенами](https://github.com/longdog/ai-advent-4/tree/day7/)
 - [День 8. Сжатие диалога](https://github.com/longdog/ai-advent-4/tree/day8/)
+- [День 9. Внешняя память](https://github.com/longdog/ai-advent-4/tree/day9/)
