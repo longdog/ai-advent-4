@@ -1,9 +1,9 @@
-import { createAgent, ReactAgent, summarizationMiddleware } from "langchain"
+import { createAgent, ReactAgent } from "langchain"
 import { GigaChat } from "langchain-gigachat"
 import { Agent } from "node:https"
-import { checkpointer, getHistory } from "./memory"
+import { tools } from "./mcp"
 import { systemPrompt } from "./prompts"
-import { modelFix } from "./tools"
+import { modelFix } from "./utils"
 
 const httpsAgent = new Agent({
   rejectUnauthorized: false,
@@ -15,22 +15,10 @@ export function createGigaChatClient() {
     httpsAgent,
     credentials: process.env.GIGACHAT_API_KEY,
   })
-  const summarizationModel = new GigaChat({
-    model: "GigaChat",
-    httpsAgent,
-    credentials: process.env.GIGACHAT_API_KEY,
-  })
   const agent = createAgent({
     model: modelFix(model),
-    checkpointer,
     systemPrompt,
-    middleware: [
-      summarizationMiddleware({
-        model: modelFix(summarizationModel),
-        trigger: { messages: 6 },
-        keep: { messages: 4 },
-      }),
-    ],
+    tools,
   })
   return agent
 }
@@ -40,9 +28,6 @@ export async function chatWithAgent(
   chatId: string,
   message: string,
 ) {
-  const prevMessages = await getHistory(chatId)
-  console.log("HISTORY FROM CHECKPOINTER", prevMessages)
-
   const result = await agent.invoke(
     {
       messages: message,
