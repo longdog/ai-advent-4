@@ -9,3 +9,4 @@
 - [День 7. Работа с токенами](https://github.com/longdog/ai-advent-4/tree/day7/)
 - [День 8. Сжатие диалога](https://github.com/longdog/ai-advent-4/tree/day8/)
 - [День 9. Внешняя память](https://github.com/longdog/ai-advent-4/tree/day9/)
+- [День 10. Подключение MCP](https://github.com/longdog/ai-advent-4/tree/day10/)
