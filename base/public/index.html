@@ -14,24 +14,24 @@
     <div class="container mx-auto max-w-2xl py-8" hx-post="/new-chat" hx-trigger="load" hx-target="#chat-history"
         hx-swap="beforeend">
         <header class="mb-8 text-center">
-            <h1 class="text-3xl font-bold text-gray-800">AI Театральный ассистент</h1>
+            <h1 class="text-3xl font-bold text-gray-800">AI ассистент</h1>
             <button hx-post="/new-chat" hx-target="#chat-history" hx-swap="innerHTML"
                 class="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors">
-                Новый этюд
+                Новый диалог
             </button>
         </header>
 
         <div id="chat-history" class="bg-white rounded-lg shadow-md p-6 mb-4 h-[60vh] overflow-y-auto">
             <!-- Chat messages will be displayed here -->
             <div class="text-center text-gray-500 py-8">
-                <p>Я помогаю придумывать сценарии к театральным этюдам</p>
+                <p>Проси, помогу, чем смогу</p>
             </div>
         </div>
 
         <form id="chat-form" hx-post="/chat" hx-target="#chat-history" hx-swap="beforeend"
             hx-on:htmx:after-request="this.reset()">
             <div class="flex gap-2">
-                <input type="text" name="message" placeholder="Напишите запрос..."
+                <input type="text" name="message" placeholder="текст..."
                     class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required>
                 <button type="submit"

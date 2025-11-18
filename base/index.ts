@@ -1,6 +1,5 @@
 import markdownit from "markdown-it"
 import { chatWithAgent, createGigaChatClient } from "./llm"
-import { getHistory } from "./memory"
 const md = markdownit()
 
 // Initialize GigaChat client
@@ -150,39 +149,14 @@ Bun.serve({
         }
       }
 
-      if (sessionId) {
-        const history = await getHistory(sessionId)
-        console.log("HISTORY", history)
-        conversationChains.set(sessionId, history)
+      sessionId = generateSessionId()
 
-        const messagesHtml = formatMessages(
-          history.map(h => ({ role: h.role, content: h.content })),
-          history.at(-1)?.content.includes("КОНЕЦ") || false,
-        )
-
-        return new Response(messagesHtml, {
-          headers: {
-            "Content-Type": "text/html",
-            "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
-          },
-        })
-      } else {
-        sessionId = generateSessionId()
-
-        const aiResponse = (await chatWithAgent(llm, sessionId, "")) as string
-
-        // Prepare response with both messages
-        const messagesHtml = formatMessages(
-          [{ role: "assistant", content: aiResponse }],
-          false,
-        )
-        return new Response(messagesHtml, {
-          headers: {
-            "Content-Type": "text/html",
-            "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
-          },
-        })
-      }
+      return new Response("", {
+        headers: {
+          "Content-Type": "text/html",
+          "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
+        },
+      })
     }
     // 404 for other routes
     return new Response("Not Found", { status: 404 })

@@ -1,22 +1,21 @@
+import { ChatGroq } from "@langchain/groq"
 import { createAgent, ReactAgent } from "langchain"
-import { GigaChat } from "langchain-gigachat"
 import { Agent } from "node:https"
 import { tools } from "./mcp"
 import { systemPrompt } from "./prompts"
-import { modelFix } from "./utils"
 
 const httpsAgent = new Agent({
   rejectUnauthorized: false,
 })
 
 export function createGigaChatClient() {
-  const model = new GigaChat({
-    model: "GigaChat",
-    httpsAgent,
-    credentials: process.env.GIGACHAT_API_KEY,
+  const model = new ChatGroq({
+    model: "meta-llama/llama-4-maverick-17b-128e-instruct",
+    temperature: 0.5,
   })
+
   const agent = createAgent({
-    model: modelFix(model),
+    model,
     systemPrompt,
     tools,
   })
