@@ -6,5 +6,10 @@ const client = new MultiServerMCPClient({
     command: "bun",
     args: ["run", "notify-mcp.ts"],
   },
+  news: {
+    transport: "stdio",
+    command: "bun",
+    args: ["run", "feed-mcp.ts"],
+  },
 })
 export const tools = await client.getTools()

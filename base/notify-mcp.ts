@@ -5,8 +5,8 @@ async function notify(message: string) {
       process.env.DBUS_SESSION_BUS_ADDRESS ||
       `unix:path=/run/user/${process.getuid()}/bus`,
   }
-  await $`notify-send "${message}"`.env(env)
-  return 0
+  await $`notify-send "Daily News" "${message}"`.env(env)
+  return `${message} sent`
 }
 
 import { Server } from "@modelcontextprotocol/sdk/server/index.js"

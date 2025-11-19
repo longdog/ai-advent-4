@@ -10,6 +10,8 @@
     "@langchain/mcp-adapters": "^1.0.0",
     "@langchain/openai": "^1.1.2",
     "@modelcontextprotocol/sdk": "^1.22.0",
+    "@rowanmanning/feed-parser": "^2.1.1",
+    "cronbake": "^0.3.2",
     "langchain": "^1.0.4",
     "langchain-gigachat": "^0.0.14",
     "markdown-it": "^14.1.0"

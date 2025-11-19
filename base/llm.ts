@@ -1,6 +1,7 @@
 import { ChatGroq } from "@langchain/groq"
 import { createAgent, ReactAgent } from "langchain"
 import { tools } from "./mcp"
+import { checkpointer } from "./memory"
 import { systemPrompt } from "./prompts"
 
 export function createChatClient() {
@@ -13,6 +14,7 @@ export function createChatClient() {
     model,
     systemPrompt,
     tools,
+    checkpointer,
   })
   return agent
 }
@@ -20,11 +22,11 @@ export function createChatClient() {
 export async function chatWithAgent(
   agent: ReactAgent,
   chatId: string,
-  message: string,
+  messages: string,
 ) {
   const result = await agent.invoke(
     {
-      messages: message,
+      messages,
     },
     {
       configurable: { thread_id: chatId },
