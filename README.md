@@ -13,3 +13,4 @@
 - [День 11. Первый инструмент MCP](https://github.com/longdog/ai-advent-4/tree/day11/)
 - [День 12. Планировщик + MCP](https://github.com/longdog/ai-advent-4/tree/day12/)
 - [День 13. Композиция MCP-инструментов](https://github.com/longdog/ai-advent-4/tree/day13/)
+- [День 14. Orchestration](https://github.com/longdog/ai-advent-4/tree/day14/)
