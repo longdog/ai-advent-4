@@ -1,3 +1,1 @@
-# Day 13
-
-Композиция MCP-инструментов
+# Day 14 Orchestration

@@ -6,8 +6,9 @@ import { systemPrompt } from "./prompts"
 
 export function createChatClient() {
   const model = new ChatGroq({
-    model: "meta-llama/llama-4-maverick-17b-128e-instruct",
-    temperature: 0.5,
+    // model: "meta-llama/llama-4-maverick-17b-128e-instruct",
+    model: "moonshotai/kimi-k2-instruct-0905",
+    temperature: 0,
   })
 
   const agent = createAgent({
