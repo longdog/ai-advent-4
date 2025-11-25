@@ -1,9 +1,9 @@
 import markdownit from "markdown-it"
-import { chatWithAgent, createGigaChatClient } from "./llm"
+import { chatWithAgent, createChatClient } from "./llm"
 const md = markdownit()
 
 // Initialize GigaChat client
-const llm = createGigaChatClient()
+const llm = createChatClient()
 
 // In-memory storage for conversation chains (in a real app, you'd use a database)
 const conversationChains = new Map<string, any>()

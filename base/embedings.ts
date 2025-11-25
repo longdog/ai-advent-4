@@ -28,14 +28,14 @@ type PdfDocument = Awaited<ReturnType<typeof loadPdf>>
 
 async function split(documents: PdfDocument) {
   const splitter = new RecursiveCharacterTextSplitter({
-    chunkSize: 100,
-    chunkOverlap: 0,
+    chunkSize: 500,
+    chunkOverlap: 100,
   })
   const chunks = await splitter.splitDocuments(documents)
   return chunks
 }
 
-async function main() {
+async function generateVector() {
   console.log("Load Pdf...")
   const documents = await loadPdf("./sea.pdf")
   console.log("Documents: ", documents.length)
@@ -47,5 +47,5 @@ async function main() {
   console.log("DONE")
 }
 if (import.meta.main) {
-  main()
+  generateVector()
 }
