@@ -15,3 +15,4 @@
 - [День 13. Композиция MCP-инструментов](https://github.com/longdog/ai-advent-4/tree/day13/)
 - [День 14. Orchestration](https://github.com/longdog/ai-advent-4/tree/day14/)
 - [День 15. Индексация документов](https://github.com/longdog/ai-advent-4/tree/day15/)
+- [День 16. Первый RAG-запрос](https://github.com/longdog/ai-advent-4/tree/day16/)
