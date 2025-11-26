@@ -26,6 +26,10 @@ export const marineTool = tool(
       .map(doc => `Source: ${doc.metadata.source}\nContent: ${doc.pageContent}`)
       .join("\n")
     console.log("Search result:", serialized)
+    console.log(
+      "Search metadata:",
+      JSON.stringify(docs.map(doc => doc.metadata)),
+    )
     return [serialized, docs]
   },
   {
