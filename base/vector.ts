@@ -20,16 +20,15 @@ const searchSchema = z.object({
 })
 export const marineTool = tool(
   async ({ query }) => {
-    console.log("Search query:", query)
-    const docs = await vectorStore.similaritySearch(query, 2)
+    console.log("\n\nSearch query:", query)
+    const docs = await vectorStore.similaritySearch(query, 4)
     const serialized = docs
-      .map(doc => `Source: ${doc.metadata.source}\nContent: ${doc.pageContent}`)
+      .map(
+        doc =>
+          `Source: ${doc.metadata.source}, Page: ${doc.metadata.loc.pageNumber}, Line: ${doc.metadata.loc.lines.from}-${doc.metadata.loc.lines.to}\nContent: ${doc.pageContent}`,
+      )
       .join("\n")
     console.log("Search result:", serialized)
-    console.log(
-      "Search metadata:",
-      JSON.stringify(docs.map(doc => doc.metadata)),
-    )
     return [serialized, docs]
   },
   {

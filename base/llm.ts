@@ -3,14 +3,14 @@ import { createAgent, ReactAgent } from "langchain"
 import { checkpointer } from "./memory"
 import { systemPromptWithVector } from "./prompts"
 import { marineTool } from "./vector"
+// model: "meta-llama/llama-4-maverick-17b-128e-instruct",
 
 export function createChatClient() {
   const model = new ChatGroq({
-    // model: "meta-llama/llama-4-maverick-17b-128e-instruct",
     model: "moonshotai/kimi-k2-instruct-0905",
     temperature: 0.7,
   })
-
+  // model.bindTools([marineTool], { tool_choice: "required" })
   const agent = createAgent({
     model,
     systemPrompt: systemPromptWithVector,
@@ -25,6 +25,10 @@ export async function chatWithAgent(
   chatId: string,
   messages: string,
 ) {
+  const memory = await checkpointer.get({ configurable: { thread_id: chatId } })
+
+  // console.log("Memory: ", memory)
+
   const result = await agent.invoke(
     {
       messages,
