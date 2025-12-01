@@ -13,12 +13,14 @@
     "@langchain/textsplitters": "^1.0.0",
     "@modelcontextprotocol/sdk": "^1.22.0",
     "@rowanmanning/feed-parser": "^2.1.1",
+    "@types/yargs": "^17.0.35",
     "cronbake": "^0.3.2",
     "faiss-node": "^0.5.1",
     "langchain": "^1.0.4",
     "langchain-gigachat": "^0.0.14",
     "markdown-it": "^14.1.0",
-    "pdf-parse": "^1"
+    "pdf-parse": "^1",
+    "yargs": "^18.0.0"
   },
   "devDependencies": {
     "@types/bun": "latest",
