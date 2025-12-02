@@ -29,6 +29,7 @@ When the user asks for a PR review:
 - suggestions for improvements
 - missing tests or edge cases
 - specific line-level comments when possible
+- make pr review and send it to github using pull_request_review_write tool from github mcp
 ## Style Rules
 - Be clear, direct, specific.
 - Give actionable advice.
@@ -45,15 +46,6 @@ If there are no serious issues, say “LGTM”.
 - Only analyze and comment.
 `
 
-//Используй данные из репозитория ${githubUrl} через GitHub MCP server и результаты поиска по документации
-export const createHelpPrompt = (
-  githubUrl: string,
-) => `Сделай краткий обзор проекта.
-Используй результаты поиска по документации с помощью инструмента документации.
-Получи структуру проекта из github репозитория ${githubUrl}.
-Мне нужна структурированная, короткая выжимка:
-- Назначение проекта — 2–3 предложения.
-- Ключевые директории и модули — самое важное из структуры проекта.
-- Основные технологии и стек.
-Не выдумывай ничего — используй только данные, полученные инструментами.
+export const createHelpPrompt = (githubUrl: string, pr: string) => `
+review pull request #${pr} in github repository ${githubUrl}
 `

@@ -57,14 +57,14 @@ export async function createChatClient(path: string) {
   const model = new ChatGroq({
     model: "meta-llama/llama-4-scout-17b-16e-instruct",
     // model: "moonshotai/kimi-k2-instruct-0905",
-    temperature: 0.7,
+    temperature: 0.5,
   })
   const docTool = await createProjectTool(path)
   const agent = createAgent({
     model,
     systemPrompt: systemPromptWithVector,
     tools: [docTool, ...githubTools],
-    middleware: [toolMonitoringMiddleware, llmMonitoringMiddleware],
+    // middleware: [toolMonitoringMiddleware, llmMonitoringMiddleware],
     checkpointer,
   })
   return agent
