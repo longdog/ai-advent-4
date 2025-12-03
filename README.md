@@ -21,3 +21,4 @@
 - [День 19. Мини-чат с памятью на RAG](https://github.com/longdog/ai-advent-4/tree/day19/)
 - [День 20. Ассистент разработчика](https://github.com/longdog/ai-advent-4/tree/day20/)
 - [День 21. Автоматизация ревью кода](https://github.com/longdog/ai-advent-4/tree/day21/)
+- [День 22. Ассистент для поддержки пользователей](https://github.com/longdog/ai-advent-4/tree/day22/)
