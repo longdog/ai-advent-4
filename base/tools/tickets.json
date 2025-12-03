@@ -1,0 +1,10 @@
+[
+  {
+    "user": "Maria",
+    "ticket": "Почему не работает sudo? Выдает ошибку user is not in the sudoers file"
+  },
+  {
+    "user": "Pavel",
+    "ticket": "Почему ракеты плохо летают?"
+  }
+]

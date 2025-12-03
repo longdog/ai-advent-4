@@ -37,7 +37,7 @@ async function split(documents: PdfDocument) {
 
 async function generateVector() {
   console.log("Load Pdf...")
-  const documents = await loadPdf("./sea.pdf")
+  const documents = await loadPdf("./alt.pdf")
   console.log("Documents: ", documents.length)
   console.log("Split Pdf...")
   const chunks = await split(documents)

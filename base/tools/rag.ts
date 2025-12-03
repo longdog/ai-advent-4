@@ -18,7 +18,7 @@ const vectorStore = await FaissStore.load("./faiss_store", model)
 const searchSchema = z.object({
   query: z.string(),
 })
-export const marineTool = tool(
+export const altTool = tool(
   async ({ query }) => {
     console.log("\n\nSearch query:", query)
     const docs = await vectorStore.similaritySearch(query, 4)
@@ -32,8 +32,8 @@ export const marineTool = tool(
     return [serialized, docs]
   },
   {
-    name: "marine",
-    description: "Поис информации по запросу о морских воинских званиях.",
+    name: "altLinux",
+    description: "База знаний Alt Linux",
     schema: searchSchema,
     responseFormat: "content_and_artifact",
   },

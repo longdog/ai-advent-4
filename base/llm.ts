@@ -2,7 +2,8 @@ import { ChatGroq } from "@langchain/groq"
 import { createAgent, ReactAgent } from "langchain"
 import { checkpointer } from "./memory"
 import { systemPromptWithVector } from "./prompts"
-import { marineTool } from "./vector"
+import { altTool } from "./tools/rag"
+import { ticketsTool } from "./tools/tickets"
 // model: "meta-llama/llama-4-maverick-17b-128e-instruct",
 
 export function createChatClient() {
@@ -10,11 +11,10 @@ export function createChatClient() {
     model: "moonshotai/kimi-k2-instruct-0905",
     temperature: 0.7,
   })
-  // model.bindTools([marineTool], { tool_choice: "required" })
   const agent = createAgent({
     model,
     systemPrompt: systemPromptWithVector,
-    tools: [marineTool],
+    tools: [altTool, ticketsTool],
     checkpointer,
   })
   return agent
