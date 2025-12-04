@@ -14,13 +14,13 @@ const ticketSchema = z.object({
 const ticketsSchema = z.array(ticketSchema)
 
 async function getTickets() {
-  const file = Bun.file("./tickets.json")
+  const file = Bun.file("./tools/tickets.json")
   const content = await file.text()
   return ticketsSchema.parse(JSON.parse(content))
 }
 
 async function addTicket(ticket: z.infer<typeof ticketSchema>) {
-  const file = Bun.file("./tickets.json")
+  const file = Bun.file("./tools/tickets.json")
   const content = await file.text()
   const tickets = ticketsSchema.parse(JSON.parse(content))
   tickets.push(ticket)
@@ -29,6 +29,7 @@ async function addTicket(ticket: z.infer<typeof ticketSchema>) {
 
 const allTicketsTool = tool(
   async () => {
+    console.log("Get all tickets...")
     const tickets = await getTickets()
     const serialized = tickets
       .map(
@@ -41,7 +42,7 @@ const allTicketsTool = tool(
   },
   {
     name: "allTickets",
-    description: "Tickets: Показать все тикеты",
+    description: "Система тикетов: Показать все тикеты",
     schema: z.object({}),
     responseFormat: "content_and_artifact",
   },
@@ -52,6 +53,7 @@ const getTicketsSchema = z.object({
 })
 const getTicketsTool = tool(
   async ({ priority }) => {
+    console.log("Get tickets by priority...", priority)
     const tickets = (await getTickets()).filter(
       ({ priority: p }) => p === priority,
     )
@@ -66,7 +68,8 @@ const getTicketsTool = tool(
   },
   {
     name: "getTickets",
-    description: "Tickets: Получить тикеты по приоритету (high, medium, low)",
+    description:
+      "Система тикетов: Получить тикеты по приоритету (high, medium, low)",
     schema: getTicketsSchema,
     responseFormat: "content_and_artifact",
   },
@@ -75,16 +78,16 @@ const getTicketsTool = tool(
 const addTicketSchema = z.object({
   priority: ticketPrioritySchema,
   ticket: z.string(),
-  user: z.string(),
 })
 const addTicketTool = tool(
-  async ({ priority, ticket, user }) => {
-    await addTicket({ priority, ticket, user })
+  async ({ priority, ticket }) => {
+    console.log("Add ticket...")
+    await addTicket({ priority, ticket, user: "AI" })
     return "Ticket added"
   },
   {
     name: "addTicket",
-    description: "Tickets: Добавить тикет",
+    description: "Система тикетов: Добавить тикет",
     schema: addTicketSchema,
     responseFormat: "content_and_artifact",
   },
