@@ -1,6 +1,5 @@
 import { GigaChat } from "gigachat"
 import { Agent } from "node:https"
-import { saveText } from "../tools/doc"
 
 const httpsAgent = new Agent({
   rejectUnauthorized: false,
@@ -21,6 +20,7 @@ export async function annotateChat(description: string) {
     timeout: 10000,
     model: "GigaChat",
     httpsAgent: httpsAgent,
+    credentials: process.env.GIGACHAT_API_KEY,
   })
   const resp = await client.chat({
     messages: [

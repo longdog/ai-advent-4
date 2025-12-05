@@ -2,20 +2,23 @@ import markdownit from "markdown-it"
 import { annotateChat } from "./models/annotate"
 import { authorChat, createAuthorClient } from "./models/author"
 import { genresChat } from "./models/genres"
+import { createImageChat } from "./models/image"
 import { createCover } from "./tools/cover"
-import { saveDocx, saveText } from "./tools/doc"
+import { saveText } from "./tools/doc"
 const md = markdownit()
 
 async function publishBook(text: string) {
-  const [titleLine, ...rest] = text.split("\n")
+  console.log(text)
+  const [titleLine, ...rest] = text
+    .replace("**КОНЕЦ**", "")
+    .replace("**СЦЕНАРИЙ**", "")
+    .split("\n")
+    .filter(l => l.trim() !== "")
   const title = titleLine?.replace("#", "").trim()
   if (!title) {
     throw new Error("Title not found")
   }
-  const body = rest
-    .join("\n")
-    .replace("**КОНЕЦ**", "")
-    .replace("**СЦЕНАРИЙ**", "")
+  const body = rest.join("\n")
   if (!body) {
     throw new Error("Body not found")
   }
@@ -23,14 +26,15 @@ async function publishBook(text: string) {
   console.log("Название сохранено в book/title.md")
   await saveText("book.md", body)
   console.log("Книга сохранена в book/book.md")
-  await saveDocx("book.md")
-  console.log("Книга сконвертирована в docx book/book.docx")
+  // await saveDocx("book.md")
+  // console.log("Книга сконвертирована в docx book/book.docx")
   const annotation = await annotateChat(body)
   await saveText("annotation.md", annotation)
   console.log("Аннотация сохранена в book/annotation.md")
   const genres = await genresChat(body)
   await saveText("genres.md", genres.toString())
   console.log("Жанры сохранены в book/genres.md")
+  await createImageChat(annotation)
   await createCover()
 }
 

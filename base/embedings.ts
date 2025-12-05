@@ -10,6 +10,7 @@ const httpsAgent = new Agent({
 
 const model = new GigaChatEmbeddings({
   httpsAgent,
+  timeout: 5 * 60 * 1000,
   credentials: process.env.GIGACHAT_API_KEY,
 })
 
