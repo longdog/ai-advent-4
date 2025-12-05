@@ -1,9 +1,41 @@
 import markdownit from "markdown-it"
-import { chatWithAgent, createChatClient } from "./llm"
+import { annotateChat } from "./models/annotate"
+import { authorChat, createAuthorClient } from "./models/author"
+import { genresChat } from "./models/genres"
+import { createCover } from "./tools/cover"
+import { saveDocx, saveText } from "./tools/doc"
 const md = markdownit()
 
+async function publishBook(text: string) {
+  const [titleLine, ...rest] = text.split("\n")
+  const title = titleLine?.replace("#", "").trim()
+  if (!title) {
+    throw new Error("Title not found")
+  }
+  const body = rest
+    .join("\n")
+    .replace("**КОНЕЦ**", "")
+    .replace("**СЦЕНАРИЙ**", "")
+  if (!body) {
+    throw new Error("Body not found")
+  }
+  await saveText("title.md", title)
+  console.log("Название сохранено в book/title.md")
+  await saveText("book.md", body)
+  console.log("Книга сохранена в book/book.md")
+  await saveDocx("book.md")
+  console.log("Книга сконвертирована в docx book/book.docx")
+  const annotation = await annotateChat(body)
+  await saveText("annotation.md", annotation)
+  console.log("Аннотация сохранена в book/annotation.md")
+  const genres = await genresChat(body)
+  await saveText("genres.md", genres.toString())
+  console.log("Жанры сохранены в book/genres.md")
+  await createCover()
+}
+
 // Initialize GigaChat client
-const llm = createChatClient()
+const llmSummary = createAuthorClient()
 
 // In-memory storage for conversation chains (in a real app, you'd use a database)
 const conversationChains = new Map<string, any>()
@@ -110,8 +142,8 @@ Bun.serve({
       }
 
       // Get AI response using conversation chain with memory
-      const aiResponse = (await chatWithAgent(
-        llm,
+      const aiResponse = (await authorChat(
+        llmSummary,
         sessionId,
         userMessage,
       )) as string
@@ -124,7 +156,9 @@ Bun.serve({
         ],
         aiResponse.includes("КОНЕЦ"),
       )
-
+      if (aiResponse.includes("КОНЕЦ")) {
+        await publishBook(aiResponse)
+      }
       // Set session ID in response cookie
       return new Response(messagesHtml, {
         headers: {
@@ -149,15 +183,27 @@ Bun.serve({
         }
       }
 
+      if (sessionId && conversationChains.has(sessionId)) {
+        conversationChains.delete(sessionId)
+      }
+
       sessionId = generateSessionId()
 
-      return new Response("", {
+      const aiResponse = (await authorChat(llmSummary, sessionId, "")) as string
+
+      // Prepare response with both messages
+      const messagesHtml = formatMessages(
+        [{ role: "assistant", content: aiResponse }],
+        false,
+      )
+      return new Response(messagesHtml, {
         headers: {
           "Content-Type": "text/html",
           "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
         },
       })
     }
+
     // 404 for other routes
     return new Response("Not Found", { status: 404 })
   },

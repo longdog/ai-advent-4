@@ -1,4 +1,4 @@
-import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf"
+import { TextLoader } from "@langchain/classic/document_loaders/fs/text"
 import { FaissStore } from "@langchain/community/vectorstores/faiss"
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters"
 import { GigaChatEmbeddings } from "langchain-gigachat"
@@ -19,7 +19,7 @@ async function store(documents: any) {
 }
 
 async function loadPdf(pdfPath: string) {
-  const loader = new PDFLoader(pdfPath)
+  const loader = new TextLoader(pdfPath)
   const documents = await loader.load()
   return documents
 }
@@ -29,7 +29,7 @@ type PdfDocument = Awaited<ReturnType<typeof loadPdf>>
 async function split(documents: PdfDocument) {
   const splitter = new RecursiveCharacterTextSplitter({
     chunkSize: 500,
-    chunkOverlap: 100,
+    chunkOverlap: 10,
   })
   const chunks = await splitter.splitDocuments(documents)
   return chunks
@@ -37,7 +37,7 @@ async function split(documents: PdfDocument) {
 
 async function generateVector() {
   console.log("Load Pdf...")
-  const documents = await loadPdf("./alt.pdf")
+  const documents = await loadPdf("./genres")
   console.log("Documents: ", documents.length)
   console.log("Split Pdf...")
   const chunks = await split(documents)
