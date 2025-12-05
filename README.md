@@ -23,3 +23,4 @@
 - [День 21. Автоматизация ревью кода](https://github.com/longdog/ai-advent-4/tree/day21/)
 - [День 22. Ассистент для поддержки пользователей](https://github.com/longdog/ai-advent-4/tree/day22/)
 - [День 23. Ассистент команды](https://github.com/longdog/ai-advent-4/tree/day23/)
+- [День 24. Реальная задача](https://github.com/longdog/ai-advent-4/tree/day24/)
