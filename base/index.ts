@@ -1,8 +1,9 @@
 import markdownit from "markdown-it"
 import { annotateChat } from "./models/annotate"
-import { authorChat, createAuthorClient } from "./models/author"
+import { authorChat } from "./models/author"
 import { genresChat } from "./models/genres"
 import { createImageChat } from "./models/image"
+import { createOlamaClient } from "./models/local"
 import { createCover } from "./tools/cover"
 import { saveText } from "./tools/doc"
 const md = markdownit()
@@ -38,8 +39,7 @@ async function publishBook(text: string) {
   await createCover()
 }
 
-// Initialize GigaChat client
-const llmSummary = createAuthorClient()
+const llmSummary = createOlamaClient()
 
 // In-memory storage for conversation chains (in a real app, you'd use a database)
 const conversationChains = new Map<string, any>()
@@ -190,19 +190,18 @@ Bun.serve({
 
       sessionId = generateSessionId()
 
-      const aiResponse = (await authorChat(llmSummary, sessionId, "")) as string
+      // const aiResponse = (await authorChat(llmSummary, sessionId, "")) as string
 
-      // Prepare response with both messages
-      const messagesHtml = formatMessages(
-        [{ role: "assistant", content: aiResponse }],
-        false,
-      )
-      return new Response(messagesHtml, {
-        headers: {
-          "Content-Type": "text/html",
-          "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
-        },
-      })
+      // const messagesHtml = formatMessages(
+      //   [{ role: "assistant", content: aiResponse }],
+      //   false,
+      // )
+      // return new Response(messagesHtml, {
+      //   headers: {
+      //     "Content-Type": "text/html",
+      //     "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
+      //   },
+      // })
     }
 
     // 404 for other routes
