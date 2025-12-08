@@ -160,9 +160,6 @@ Bun.serve({
         ],
         aiResponse.includes("КОНЕЦ"),
       )
-      if (aiResponse.includes("КОНЕЦ")) {
-        await publishBook(aiResponse)
-      }
       // Set session ID in response cookie
       return new Response(messagesHtml, {
         headers: {
