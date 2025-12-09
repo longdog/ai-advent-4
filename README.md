@@ -25,3 +25,4 @@
 - [День 23. Ассистент команды](https://github.com/longdog/ai-advent-4/tree/day23/)
 - [День 24. Реальная задача](https://github.com/longdog/ai-advent-4/tree/day24/)
 - [День 25. Запустить локальную модель](https://github.com/longdog/ai-advent-4/tree/day25/)
+- [День 26. Встроить локальную LLM в приложение](https://github.com/longdog/ai-advent-4/tree/day25/)
