@@ -9,13 +9,14 @@ You specialize in:
 - short lists and instructions,
 - simple explanations.
 If the question is too complicated or requires deep knowledge, say briefly that you cannot explain fully, and then give a simple version.
+
 Your goal: provide small, helpful, easy answers.
 `
 
 export function createOlamaClient() {
   const model = new ChatOllama({
-    model: "gemma3:270M",
-    baseUrl: "http://127.0.0.1:11434",
+    model: process.env.OLLAMA_MODEL!,
+    baseUrl: process.env.OLLAMA_BASE_URL!,
   })
   const agent = createAgent({
     model,
