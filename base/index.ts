@@ -1,4 +1,4 @@
-import MarkdownIt from "markdown-it/index.js"
+import MarkdownIt from "markdown-it"
 import { createOlamaClient, olamaChat } from "./models/local"
 const md = MarkdownIt()
 
