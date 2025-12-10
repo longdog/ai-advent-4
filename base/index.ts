@@ -98,12 +98,6 @@ Bun.serve({
 
       console.log("Session ID from cookie:", sessionId)
 
-      // if (!sessionId || !conversationChains.has(sessionId)) {
-      //   sessionId = generateSessionId()
-      //   const chat = createChat(sessionId)
-      //   conversationChains.set(sessionId, chat)
-      // }
-
       if (!sessionId) {
         return new Response("Session not found", { status: 404 })
       }
@@ -153,18 +147,12 @@ Bun.serve({
 
       sessionId = generateSessionId()
 
-      // const aiResponse = (await authorChat(llmSummary, sessionId, "")) as string
-
-      // const messagesHtml = formatMessages(
-      //   [{ role: "assistant", content: aiResponse }],
-      //   false,
-      // )
-      // return new Response(messagesHtml, {
-      //   headers: {
-      //     "Content-Type": "text/html",
-      //     "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
-      //   },
-      // })
+      return new Response("", {
+        headers: {
+          "Content-Type": "text/html",
+          "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
+        },
+      })
     }
 
     // 404 for other routes
