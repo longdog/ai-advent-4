@@ -1,43 +1,6 @@
-import markdownit from "markdown-it"
-import { annotateChat } from "./models/annotate"
-import { authorChat } from "./models/author"
-import { genresChat } from "./models/genres"
-import { createImageChat } from "./models/image"
-import { createOlamaClient } from "./models/local"
-import { createCover } from "./tools/cover"
-import { saveText } from "./tools/doc"
-const md = markdownit()
-
-async function publishBook(text: string) {
-  console.log(text)
-  const [titleLine, ...rest] = text
-    .replace("**КОНЕЦ**", "")
-    .replace("**СЦЕНАРИЙ**", "")
-    .split("\n")
-    .filter(l => l.trim() !== "")
-  const title = titleLine?.replace("#", "").trim()
-  if (!title) {
-    throw new Error("Title not found")
-  }
-  const body = rest.join("\n")
-  if (!body) {
-    throw new Error("Body not found")
-  }
-  await saveText("title.md", title)
-  console.log("Название сохранено в book/title.md")
-  await saveText("book.md", body)
-  console.log("Книга сохранена в book/book.md")
-  // await saveDocx("book.md")
-  // console.log("Книга сконвертирована в docx book/book.docx")
-  const annotation = await annotateChat(body)
-  await saveText("annotation.md", annotation)
-  console.log("Аннотация сохранена в book/annotation.md")
-  const genres = await genresChat(body)
-  await saveText("genres.md", genres.toString())
-  console.log("Жанры сохранены в book/genres.md")
-  await createImageChat(annotation)
-  await createCover()
-}
+import MarkdownIt from "markdown-it/index.js"
+import { createOlamaClient, olamaChat } from "./models/local"
+const md = MarkdownIt()
 
 const llmSummary = createOlamaClient()
 
@@ -146,7 +109,7 @@ Bun.serve({
       }
 
       // Get AI response using conversation chain with memory
-      const aiResponse = (await authorChat(
+      const aiResponse = (await olamaChat(
         llmSummary,
         sessionId,
         userMessage,
