@@ -1,0 +1,1674 @@
+[
+  {
+    "id": 3157,
+    "athleteId": 245308,
+    "firstName": "Rudzma",
+    "lastName": "Abubakar",
+    "delegation": {
+      "id": 17,
+      "title": "Philippines",
+      "abbreviation": "PHI"
+    },
+    "division": {
+      "id": 149962,
+      "title": "S 16-40 Female -48kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 48,
+      "minWeight": 45
+    }
+  },
+  {
+    "id": 3192,
+    "athleteId": 845298,
+    "firstName": "Kullanat",
+    "lastName": "Aonok",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149963,
+      "title": "S 16-40 Female -51kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 51,
+      "minWeight": 48
+    }
+  },
+  {
+    "id": 3193,
+    "athleteId": 943552,
+    "firstName": "Kim Ryan",
+    "lastName": "Asense",
+    "delegation": {
+      "id": 17,
+      "title": "Philippines",
+      "abbreviation": "PHI"
+    },
+    "division": {
+      "id": 149953,
+      "title": "S 16-40 Male -63.5kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 63.5,
+      "minWeight": 60
+    }
+  },
+  {
+    "id": 3216,
+    "athleteId": 1779220,
+    "firstName": "Saksit",
+    "lastName": "Atidsam",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149952,
+      "title": "S 16-40 Male -60kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 60,
+      "minWeight": 57
+    }
+  },
+  {
+    "id": 3228,
+    "athleteId": 1824812,
+    "firstName": "Moe",
+    "lastName": "Aung Soe",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149952,
+      "title": "S 16-40 Male -60kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 60,
+      "minWeight": 57
+    }
+  },
+  {
+    "id": 3163,
+    "athleteId": 310474,
+    "firstName": "Damia Husna",
+    "lastName": "Azian",
+    "delegation": {
+      "id": 25,
+      "title": "Malaysia",
+      "abbreviation": "MAS"
+    },
+    "division": {
+      "id": 149961,
+      "title": "S 16-40 Female -45kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 45,
+      "minWeight": 0
+    }
+  },
+  {
+    "id": 3201,
+    "athleteId": 1501208,
+    "firstName": "Mark Jeremy",
+    "lastName": "Balmoris",
+    "delegation": {
+      "id": 17,
+      "title": "Philippines",
+      "abbreviation": "PHI"
+    },
+    "division": {
+      "id": 149950,
+      "title": "S 16-40 Male -54kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 54,
+      "minWeight": 51
+    }
+  },
+  {
+    "id": 3211,
+    "athleteId": 1772064,
+    "firstName": "Thang",
+    "lastName": "Bang Quang",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149955,
+      "title": "S 16-40 Male -71kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 71,
+      "minWeight": 67
+    }
+  },
+  {
+    "id": 3190,
+    "athleteId": 641940,
+    "firstName": "Galih",
+    "lastName": "Bangkit Permadi",
+    "delegation": {
+      "id": 20,
+      "title": "Indonesia",
+      "abbreviation": "INA"
+    },
+    "division": {
+      "id": 149948,
+      "title": "S 16-40 Male -48kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 48,
+      "minWeight": 45
+    }
+  },
+  {
+    "id": 3243,
+    "athleteId": 1824917,
+    "firstName": "Sibou",
+    "lastName": "Banxadeth",
+    "delegation": {
+      "id": 517,
+      "title": "Lao People's Democratic Republic",
+      "abbreviation": "LAO"
+    },
+    "division": {
+      "id": 149948,
+      "title": "S 16-40 Male -48kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 48,
+      "minWeight": 45
+    }
+  },
+  {
+    "id": 3173,
+    "athleteId": 473306,
+    "firstName": "Duong Duc",
+    "lastName": "Bao",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149948,
+      "title": "S 16-40 Male -48kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 48,
+      "minWeight": 45
+    }
+  },
+  {
+    "id": 3175,
+    "athleteId": 476605,
+    "firstName": "Ahmad Nor Iman Aliff",
+    "lastName": "Bin Rakib",
+    "delegation": {
+      "id": 25,
+      "title": "Malaysia",
+      "abbreviation": "MAS"
+    },
+    "division": {
+      "id": 149952,
+      "title": "S 16-40 Male -60kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 60,
+      "minWeight": 57
+    }
+  },
+  {
+    "id": 3176,
+    "athleteId": 476774,
+    "firstName": "Mohamad Shahrul hakim",
+    "lastName": "Bin Rosli",
+    "delegation": {
+      "id": 25,
+      "title": "Malaysia",
+      "abbreviation": "MAS"
+    },
+    "division": {
+      "id": 149955,
+      "title": "S 16-40 Male -71kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 71,
+      "minWeight": 67
+    }
+  },
+  {
+    "id": 3161,
+    "athleteId": 248989,
+    "firstName": "Wassof",
+    "lastName": "Bin Rumijam",
+    "delegation": {
+      "id": 25,
+      "title": "Malaysia",
+      "abbreviation": "MAS"
+    },
+    "division": {
+      "id": 149950,
+      "title": "S 16-40 Male -54kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 54,
+      "minWeight": 51
+    }
+  },
+  {
+    "id": 3181,
+    "athleteId": 512194,
+    "firstName": "Muhammad Mikail Ghazali",
+    "lastName": "Bin Zulfikar",
+    "delegation": {
+      "id": 25,
+      "title": "Malaysia",
+      "abbreviation": "MAS"
+    },
+    "division": {
+      "id": 149951,
+      "title": "S 16-40 Male -57kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 57,
+      "minWeight": 54
+    }
+  },
+  {
+    "id": 3174,
+    "athleteId": 476602,
+    "firstName": "Nur Amisha",
+    "lastName": "Binti Azrilrizal",
+    "delegation": {
+      "id": 25,
+      "title": "Malaysia",
+      "abbreviation": "MAS"
+    },
+    "division": {
+      "id": 149963,
+      "title": "S 16-40 Female -51kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 51,
+      "minWeight": 48
+    }
+  },
+  {
+    "id": 3200,
+    "athleteId": 1283447,
+    "firstName": "Nur Bisyarah Altisya",
+    "lastName": "Binti Mohd Zairee",
+    "delegation": {
+      "id": 25,
+      "title": "Malaysia",
+      "abbreviation": "MAS"
+    },
+    "division": {
+      "id": 149965,
+      "title": "S 16-40 Female -57kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 57,
+      "minWeight": 54
+    }
+  },
+  {
+    "id": 3168,
+    "athleteId": 344541,
+    "firstName": "Islay Erika",
+    "lastName": "Bomogao",
+    "delegation": {
+      "id": 17,
+      "title": "Philippines",
+      "abbreviation": "PHI"
+    },
+    "division": {
+      "id": 149961,
+      "title": "S 16-40 Female -45kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 45,
+      "minWeight": 0
+    }
+  },
+  {
+    "id": 3215,
+    "athleteId": 1778985,
+    "firstName": "Narongchai",
+    "lastName": "Chaithong",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149955,
+      "title": "S 16-40 Male -71kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 71,
+      "minWeight": 67
+    }
+  },
+  {
+    "id": 3220,
+    "athleteId": 1824802,
+    "firstName": "Mr",
+    "lastName": "Chembone",
+    "delegation": {
+      "id": 517,
+      "title": "Lao People's Democratic Republic",
+      "abbreviation": "LAO"
+    },
+    "division": {
+      "id": 149949,
+      "title": "S 16-40 Male -51kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 51,
+      "minWeight": 48
+    }
+  },
+  {
+    "id": 3189,
+    "athleteId": 636690,
+    "firstName": "Stevannie Rejune",
+    "lastName": "Christia",
+    "delegation": {
+      "id": 20,
+      "title": "Indonesia",
+      "abbreviation": "INA"
+    },
+    "division": {
+      "id": 149963,
+      "title": "S 16-40 Female -51kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 51,
+      "minWeight": 48
+    }
+  },
+  {
+    "id": 3204,
+    "athleteId": 1674232,
+    "firstName": "Mathew Blane",
+    "lastName": "Comicho",
+    "delegation": {
+      "id": 17,
+      "title": "Philippines",
+      "abbreviation": "PHI"
+    },
+    "division": {
+      "id": 149954,
+      "title": "S 16-40 Male -67kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 67,
+      "minWeight": 63.5
+    }
+  },
+  {
+    "id": 3207,
+    "athleteId": 1674250,
+    "firstName": "Eunicka Kaye",
+    "lastName": "Costales",
+    "delegation": {
+      "id": 17,
+      "title": "Philippines",
+      "abbreviation": "PHI"
+    },
+    "division": {
+      "id": 149965,
+      "title": "S 16-40 Female -57kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 57,
+      "minWeight": 54
+    }
+  },
+  {
+    "id": 3171,
+    "athleteId": 473113,
+    "firstName": "Dao",
+    "lastName": "Dai Hai",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149952,
+      "title": "S 16-40 Male -60kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 60,
+      "minWeight": 57
+    }
+  },
+  {
+    "id": 3208,
+    "athleteId": 1753012,
+    "firstName": "Hoa",
+    "lastName": "Dinh Thi",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149964,
+      "title": "S 16-40 Female -54kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 54,
+      "minWeight": 51
+    }
+  },
+  {
+    "id": 3160,
+    "athleteId": 245535,
+    "firstName": "Nguyen",
+    "lastName": "Doan Long",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149954,
+      "title": "S 16-40 Male -67kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 67,
+      "minWeight": 63.5
+    }
+  },
+  {
+    "id": 3229,
+    "athleteId": 1824813,
+    "firstName": "Huai",
+    "lastName": "Elizabeth Cing Za",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149966,
+      "title": "S 16-40 Female -60kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 60,
+      "minWeight": 57
+    }
+  },
+  {
+    "id": 3205,
+    "athleteId": 1674244,
+    "firstName": "Ejay",
+    "lastName": "Galendez",
+    "delegation": {
+      "id": 17,
+      "title": "Philippines",
+      "abbreviation": "PHI"
+    },
+    "division": {
+      "id": 149952,
+      "title": "S 16-40 Male -60kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 60,
+      "minWeight": 57
+    }
+  },
+  {
+    "id": 3156,
+    "athleteId": 242215,
+    "firstName": "Cheryl",
+    "lastName": "Gwa WEI YING",
+    "delegation": {
+      "id": 97,
+      "title": "Singapore",
+      "abbreviation": "SGP"
+    },
+    "division": {
+      "id": 149962,
+      "title": "S 16-40 Female -48kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 48,
+      "minWeight": 45
+    }
+  },
+  {
+    "id": 3184,
+    "athleteId": 538050,
+    "firstName": "Mai",
+    "lastName": "Hoang Khanh",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149961,
+      "title": "S 16-40 Female -45kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 45,
+      "minWeight": 0
+    }
+  },
+  {
+    "id": 3230,
+    "athleteId": 1824814,
+    "firstName": "Shing",
+    "lastName": "Htang Khui",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149949,
+      "title": "S 16-40 Male -51kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 51,
+      "minWeight": 48
+    }
+  },
+  {
+    "id": 3202,
+    "athleteId": 1661836,
+    "firstName": "Thongchai",
+    "lastName": "Huanak",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149950,
+      "title": "S 16-40 Male -54kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 54,
+      "minWeight": 51
+    }
+  },
+  {
+    "id": 3219,
+    "athleteId": 1779871,
+    "firstName": "Indra Surya Ondeng",
+    "lastName": "Hutagulung",
+    "delegation": {
+      "id": 20,
+      "title": "Indonesia",
+      "abbreviation": "INA"
+    },
+    "division": {
+      "id": 149953,
+      "title": "S 16-40 Male -63.5kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 63.5,
+      "minWeight": 60
+    }
+  },
+  {
+    "id": 3209,
+    "athleteId": 1753016,
+    "firstName": "Dang",
+    "lastName": "Huynh Hai",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149949,
+      "title": "S 16-40 Male -51kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 51,
+      "minWeight": 48
+    }
+  },
+  {
+    "id": 3191,
+    "athleteId": 682511,
+    "firstName": "Tyron",
+    "lastName": "Jamborillo",
+    "delegation": {
+      "id": 17,
+      "title": "Philippines",
+      "abbreviation": "PHI"
+    },
+    "division": {
+      "id": 149947,
+      "title": "S 16-40 Male -45kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 45,
+      "minWeight": 0
+    }
+  },
+  {
+    "id": 3164,
+    "athleteId": 333216,
+    "firstName": "Texas",
+    "lastName": "Jeremy Lo",
+    "delegation": {
+      "id": 25,
+      "title": "Malaysia",
+      "abbreviation": "MAS"
+    },
+    "division": {
+      "id": 149953,
+      "title": "S 16-40 Male -63.5kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 63.5,
+      "minWeight": 60
+    }
+  },
+  {
+    "id": 3221,
+    "athleteId": 1824803,
+    "firstName": "Aksone",
+    "lastName": "Kamkeo",
+    "delegation": {
+      "id": 517,
+      "title": "Lao People's Democratic Republic",
+      "abbreviation": "LAO"
+    },
+    "division": {
+      "id": 149961,
+      "title": "S 16-40 Female -45kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 45,
+      "minWeight": 0
+    }
+  },
+  {
+    "id": 3162,
+    "athleteId": 274548,
+    "firstName": "Kaewrudee",
+    "lastName": "Kamtakrapoom",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149965,
+      "title": "S 16-40 Female -57kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 57,
+      "minWeight": 54
+    }
+  },
+  {
+    "id": 3231,
+    "athleteId": 1824815,
+    "firstName": "Sone",
+    "lastName": "Kaung Pyae",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149948,
+      "title": "S 16-40 Male -48kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 48,
+      "minWeight": 45
+    }
+  },
+  {
+    "id": 3222,
+    "athleteId": 1824804,
+    "firstName": "Souliya",
+    "lastName": "Keopaseuth",
+    "delegation": {
+      "id": 517,
+      "title": "Lao People's Democratic Republic",
+      "abbreviation": "LAO"
+    },
+    "division": {
+      "id": 149953,
+      "title": "S 16-40 Male -63.5kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 63.5,
+      "minWeight": 60
+    }
+  },
+  {
+    "id": 3212,
+    "athleteId": 1778411,
+    "firstName": "Jeryl",
+    "lastName": "Khoo",
+    "delegation": {
+      "id": 97,
+      "title": "Singapore",
+      "abbreviation": "SGP"
+    },
+    "division": {
+      "id": 149955,
+      "title": "S 16-40 Male -71kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 71,
+      "minWeight": 67
+    }
+  },
+  {
+    "id": 3232,
+    "athleteId": 1824816,
+    "firstName": "Htet",
+    "lastName": "Kyaw Lin",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149956,
+      "title": "S 16-40 Male -75kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 75,
+      "minWeight": 71
+    }
+  },
+  {
+    "id": 3242,
+    "athleteId": 1824914,
+    "firstName": "Tun",
+    "lastName": "Kyaw Swar",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149954,
+      "title": "S 16-40 Male -67kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 67,
+      "minWeight": 63.5
+    }
+  },
+  {
+    "id": 3158,
+    "athleteId": 245337,
+    "firstName": "Ariel Lee",
+    "lastName": "Lampacan",
+    "delegation": {
+      "id": 17,
+      "title": "Philippines",
+      "abbreviation": "PHI"
+    },
+    "division": {
+      "id": 149951,
+      "title": "S 16-40 Male -57kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 57,
+      "minWeight": 54
+    }
+  },
+  {
+    "id": 3172,
+    "athleteId": 473286,
+    "firstName": "Bui Hai",
+    "lastName": "Linh",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149963,
+      "title": "S 16-40 Female -51kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 51,
+      "minWeight": 48
+    }
+  },
+  {
+    "id": 3218,
+    "athleteId": 1779869,
+    "firstName": "Adisty Gracelia",
+    "lastName": "Lularoh",
+    "delegation": {
+      "id": 20,
+      "title": "Indonesia",
+      "abbreviation": "INA"
+    },
+    "division": {
+      "id": 149965,
+      "title": "S 16-40 Female -57kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 57,
+      "minWeight": 54
+    }
+  },
+  {
+    "id": 3185,
+    "athleteId": 539216,
+    "firstName": "Allysa Kyllie",
+    "lastName": "Mallari",
+    "delegation": {
+      "id": 17,
+      "title": "Philippines",
+      "abbreviation": "PHI"
+    },
+    "division": {
+      "id": 149964,
+      "title": "S 16-40 Female -54kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 54,
+      "minWeight": 51
+    }
+  },
+  {
+    "id": 3233,
+    "athleteId": 1824817,
+    "firstName": "Win",
+    "lastName": "Mar Lar",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149964,
+      "title": "S 16-40 Female -54kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 54,
+      "minWeight": 51
+    }
+  },
+  {
+    "id": 3234,
+    "athleteId": 1824818,
+    "firstName": "Oo",
+    "lastName": "May Thing Zar",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149962,
+      "title": "S 16-40 Female -48kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 48,
+      "minWeight": 45
+    }
+  },
+  {
+    "id": 3178,
+    "athleteId": 479082,
+    "firstName": "Chalongchai",
+    "lastName": "Minindi",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149949,
+      "title": "S 16-40 Male -51kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 51,
+      "minWeight": 48
+    }
+  },
+  {
+    "id": 3206,
+    "athleteId": 1674246,
+    "firstName": "Floryvic",
+    "lastName": "Montero",
+    "delegation": {
+      "id": 17,
+      "title": "Philippines",
+      "abbreviation": "PHI"
+    },
+    "division": {
+      "id": 149963,
+      "title": "S 16-40 Female -51kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 51,
+      "minWeight": 48
+    }
+  },
+  {
+    "id": 3195,
+    "athleteId": 946688,
+    "firstName": "Minh",
+    "lastName": "Nguyen Hoang",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149951,
+      "title": "S 16-40 Male -57kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 57,
+      "minWeight": 54
+    }
+  },
+  {
+    "id": 3194,
+    "athleteId": 946687,
+    "firstName": "Son",
+    "lastName": "Nguyen Hoang",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149947,
+      "title": "S 16-40 Male -45kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 45,
+      "minWeight": 0
+    }
+  },
+  {
+    "id": 3159,
+    "athleteId": 245526,
+    "firstName": "Tung",
+    "lastName": "Nguyen Thanh",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149956,
+      "title": "S 16-40 Male -75kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 75,
+      "minWeight": 71
+    }
+  },
+  {
+    "id": 3196,
+    "athleteId": 957996,
+    "firstName": "Chieu",
+    "lastName": "Nguyen Thi",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149965,
+      "title": "S 16-40 Female -57kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 57,
+      "minWeight": 54
+    }
+  },
+  {
+    "id": 3182,
+    "athleteId": 525204,
+    "firstName": "Arissara",
+    "lastName": "Noon-Eiad",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149961,
+      "title": "S 16-40 Female -45kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 45,
+      "minWeight": 0
+    }
+  },
+  {
+    "id": 3235,
+    "athleteId": 1824819,
+    "firstName": "Su Latt",
+    "lastName": "Nyein Chan",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149963,
+      "title": "S 16-40 Female -51kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 51,
+      "minWeight": 48
+    }
+  },
+  {
+    "id": 3236,
+    "athleteId": 1824820,
+    "firstName": "Soe",
+    "lastName": "Ohmar",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149965,
+      "title": "S 16-40 Female -57kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 57,
+      "minWeight": 54
+    }
+  },
+  {
+    "id": 3188,
+    "athleteId": 635225,
+    "firstName": "Man",
+    "lastName": "Pham Ngoc",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149953,
+      "title": "S 16-40 Male -63.5kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 63.5,
+      "minWeight": 60
+    }
+  },
+  {
+    "id": 3177,
+    "athleteId": 479081,
+    "firstName": "Supphanat",
+    "lastName": "Phetrak",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149948,
+      "title": "S 16-40 Male -48kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 48,
+      "minWeight": 45
+    }
+  },
+  {
+    "id": 3165,
+    "athleteId": 339990,
+    "firstName": "Huynh Hoang",
+    "lastName": "Phi",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149950,
+      "title": "S 16-40 Male -54kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 54,
+      "minWeight": 51
+    }
+  },
+  {
+    "id": 3166,
+    "athleteId": 339995,
+    "firstName": "Nguyen Thi",
+    "lastName": "Phuong Hau",
+    "delegation": {
+      "id": 96,
+      "title": "Vietnam",
+      "abbreviation": "VIE"
+    },
+    "division": {
+      "id": 149966,
+      "title": "S 16-40 Female -60kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 60,
+      "minWeight": 57
+    }
+  },
+  {
+    "id": 3186,
+    "athleteId": 539299,
+    "firstName": "Jan Brix",
+    "lastName": "Ramiscal",
+    "delegation": {
+      "id": 17,
+      "title": "Philippines",
+      "abbreviation": "PHI"
+    },
+    "division": {
+      "id": 149948,
+      "title": "S 16-40 Male -48kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 48,
+      "minWeight": 45
+    }
+  },
+  {
+    "id": 3199,
+    "athleteId": 1204940,
+    "firstName": "Nurul",
+    "lastName": "Rasyidah",
+    "delegation": {
+      "id": 25,
+      "title": "Malaysia",
+      "abbreviation": "MAS"
+    },
+    "division": {
+      "id": 149966,
+      "title": "S 16-40 Female -60kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 60,
+      "minWeight": 57
+    }
+  },
+  {
+    "id": 3198,
+    "athleteId": 1197606,
+    "firstName": "Insyad",
+    "lastName": "Rumijam",
+    "delegation": {
+      "id": 25,
+      "title": "Malaysia",
+      "abbreviation": "MAS"
+    },
+    "division": {
+      "id": 149949,
+      "title": "S 16-40 Male -51kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 51,
+      "minWeight": 48
+    }
+  },
+  {
+    "id": 3167,
+    "athleteId": 343273,
+    "firstName": "Areeya",
+    "lastName": "Sahot",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149966,
+      "title": "S 16-40 Female -60kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 60,
+      "minWeight": 57
+    }
+  },
+  {
+    "id": 3213,
+    "athleteId": 1778976,
+    "firstName": "Krittanu",
+    "lastName": "Saladkaew",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149947,
+      "title": "S 16-40 Male -45kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 45,
+      "minWeight": 0
+    }
+  },
+  {
+    "id": 3179,
+    "athleteId": 479306,
+    "firstName": "Thotsaphon",
+    "lastName": "Saophanao",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149956,
+      "title": "S 16-40 Male -75kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 75,
+      "minWeight": 71
+    }
+  },
+  {
+    "id": 3214,
+    "athleteId": 1778984,
+    "firstName": "Ruthaiphan",
+    "lastName": "Sapmanee",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149953,
+      "title": "S 16-40 Male -63.5kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 63.5,
+      "minWeight": 60
+    }
+  },
+  {
+    "id": 3237,
+    "athleteId": 1824821,
+    "firstName": "Tit",
+    "lastName": "Saw Ah",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149951,
+      "title": "S 16-40 Male -57kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 57,
+      "minWeight": 54
+    }
+  },
+  {
+    "id": 3238,
+    "athleteId": 1824822,
+    "firstName": "Ye Linn",
+    "lastName": "Saw Khaing",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149950,
+      "title": "S 16-40 Male -54kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 54,
+      "minWeight": 51
+    }
+  },
+  {
+    "id": 3239,
+    "athleteId": 1824824,
+    "firstName": "Moe",
+    "lastName": "Saw Myat",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149947,
+      "title": "S 16-40 Male -45kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 45,
+      "minWeight": 0
+    }
+  },
+  {
+    "id": 3223,
+    "athleteId": 1824806,
+    "firstName": "Thongbang",
+    "lastName": "Seuaphom",
+    "delegation": {
+      "id": 517,
+      "title": "Lao People's Democratic Republic",
+      "abbreviation": "LAO"
+    },
+    "division": {
+      "id": 149951,
+      "title": "S 16-40 Male -57kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 57,
+      "minWeight": 54
+    }
+  },
+  {
+    "id": 3217,
+    "athleteId": 1779221,
+    "firstName": "Suphakon",
+    "lastName": "Sirilun",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149951,
+      "title": "S 16-40 Male -57kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 57,
+      "minWeight": 54
+    }
+  },
+  {
+    "id": 3224,
+    "athleteId": 1824807,
+    "firstName": "Loukket",
+    "lastName": "Sithong",
+    "delegation": {
+      "id": 517,
+      "title": "Lao People's Democratic Republic",
+      "abbreviation": "LAO"
+    },
+    "division": {
+      "id": 149962,
+      "title": "S 16-40 Female -48kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 48,
+      "minWeight": 45
+    }
+  },
+  {
+    "id": 3225,
+    "athleteId": 1824808,
+    "firstName": "Latxasak",
+    "lastName": "Souliyavong",
+    "delegation": {
+      "id": 517,
+      "title": "Lao People's Democratic Republic",
+      "abbreviation": "LAO"
+    },
+    "division": {
+      "id": 149954,
+      "title": "S 16-40 Male -67kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 67,
+      "minWeight": 63.5
+    }
+  },
+  {
+    "id": 3226,
+    "athleteId": 1824809,
+    "firstName": "Soukan",
+    "lastName": "Taipanyavong",
+    "delegation": {
+      "id": 517,
+      "title": "Lao People's Democratic Republic",
+      "abbreviation": "LAO"
+    },
+    "division": {
+      "id": 149952,
+      "title": "S 16-40 Male -60kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 60,
+      "minWeight": 57
+    }
+  },
+  {
+    "id": 3180,
+    "athleteId": 479327,
+    "firstName": "Niracha",
+    "lastName": "Tangchio",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149962,
+      "title": "S 16-40 Female -48kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 48,
+      "minWeight": 45
+    }
+  },
+  {
+    "id": 3183,
+    "athleteId": 525205,
+    "firstName": "Nirawan",
+    "lastName": "Tangchio",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149964,
+      "title": "S 16-40 Female -54kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 54,
+      "minWeight": 51
+    }
+  },
+  {
+    "id": 3203,
+    "athleteId": 1669706,
+    "firstName": "Ginny",
+    "lastName": "Teo",
+    "delegation": {
+      "id": 97,
+      "title": "Singapore",
+      "abbreviation": "SGP"
+    },
+    "division": {
+      "id": 149964,
+      "title": "S 16-40 Female -54kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 54,
+      "minWeight": 51
+    }
+  },
+  {
+    "id": 3197,
+    "athleteId": 960960,
+    "firstName": "Terrence",
+    "lastName": "Teo",
+    "delegation": {
+      "id": 97,
+      "title": "Singapore",
+      "abbreviation": "SGP"
+    },
+    "division": {
+      "id": 149956,
+      "title": "S 16-40 Male -75kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 75,
+      "minWeight": 71
+    }
+  },
+  {
+    "id": 3227,
+    "athleteId": 1824810,
+    "firstName": "Khampha",
+    "lastName": "Theuasavang",
+    "delegation": {
+      "id": 517,
+      "title": "Lao People's Democratic Republic",
+      "abbreviation": "LAO"
+    },
+    "division": {
+      "id": 149950,
+      "title": "S 16-40 Male -54kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 54,
+      "minWeight": 51
+    }
+  },
+  {
+    "id": 3210,
+    "athleteId": 1769828,
+    "firstName": "Abdolmalek",
+    "lastName": "Thingnamrob",
+    "delegation": {
+      "id": 57,
+      "title": "Thailand",
+      "abbreviation": "THA"
+    },
+    "division": {
+      "id": 149954,
+      "title": "S 16-40 Male -67kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 67,
+      "minWeight": 63.5
+    }
+  },
+  {
+    "id": 3240,
+    "athleteId": 1824825,
+    "firstName": "Aung",
+    "lastName": "Tun Min",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149955,
+      "title": "S 16-40 Male -71kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 71,
+      "minWeight": 67
+    }
+  },
+  {
+    "id": 3170,
+    "athleteId": 403810,
+    "firstName": "A'mmarul Shafiq",
+    "lastName": "Ubaidillah",
+    "delegation": {
+      "id": 25,
+      "title": "Malaysia",
+      "abbreviation": "MAS"
+    },
+    "division": {
+      "id": 149956,
+      "title": "S 16-40 Male -75kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 75,
+      "minWeight": 71
+    }
+  },
+  {
+    "id": 3169,
+    "athleteId": 365933,
+    "firstName": "Eva Anatasia",
+    "lastName": "Warren",
+    "delegation": {
+      "id": 25,
+      "title": "Malaysia",
+      "abbreviation": "MAS"
+    },
+    "division": {
+      "id": 149962,
+      "title": "S 16-40 Female -48kg",
+      "gender": "Female",
+      "isAdult": true,
+      "maxWeight": 48,
+      "minWeight": 45
+    }
+  },
+  {
+    "id": 3187,
+    "athleteId": 633678,
+    "firstName": "LJ Rafael",
+    "lastName": "Yasay",
+    "delegation": {
+      "id": 17,
+      "title": "Philippines",
+      "abbreviation": "PHI"
+    },
+    "division": {
+      "id": 149949,
+      "title": "S 16-40 Male -51kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 51,
+      "minWeight": 48
+    }
+  },
+  {
+    "id": 3241,
+    "athleteId": 1824826,
+    "firstName": "Chan",
+    "lastName": "Yay",
+    "delegation": {
+      "id": 1119,
+      "title": "Myanmar Muaythai",
+      "abbreviation": "MYA"
+    },
+    "division": {
+      "id": 149953,
+      "title": "S 16-40 Male -63.5kg",
+      "gender": "Male",
+      "isAdult": true,
+      "maxWeight": 63.5,
+      "minWeight": 60
+    }
+  }
+]

@@ -1,0 +1,530 @@
+[
+  {
+    "name": "Rudzma Abubakar",
+    "gender": "Female",
+    "delegation": "Philippines",
+    "division": "S 16-40 Female -48kg"
+  },
+  {
+    "name": "Kullanat Aonok",
+    "gender": "Female",
+    "delegation": "Thailand",
+    "division": "S 16-40 Female -51kg"
+  },
+  {
+    "name": "Kim Ryan Asense",
+    "gender": "Male",
+    "delegation": "Philippines",
+    "division": "S 16-40 Male -63.5kg"
+  },
+  {
+    "name": "Saksit Atidsam",
+    "gender": "Male",
+    "delegation": "Thailand",
+    "division": "S 16-40 Male -60kg"
+  },
+  {
+    "name": "Moe Aung Soe",
+    "gender": "Male",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Male -60kg"
+  },
+  {
+    "name": "Damia Husna Azian",
+    "gender": "Female",
+    "delegation": "Malaysia",
+    "division": "S 16-40 Female -45kg"
+  },
+  {
+    "name": "Mark Jeremy Balmoris",
+    "gender": "Male",
+    "delegation": "Philippines",
+    "division": "S 16-40 Male -54kg"
+  },
+  {
+    "name": "Thang Bang Quang",
+    "gender": "Male",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Male -71kg"
+  },
+  {
+    "name": "Galih Bangkit Permadi",
+    "gender": "Male",
+    "delegation": "Indonesia",
+    "division": "S 16-40 Male -48kg"
+  },
+  {
+    "name": "Sibou Banxadeth",
+    "gender": "Male",
+    "delegation": "Lao People's Democratic Republic",
+    "division": "S 16-40 Male -48kg"
+  },
+  {
+    "name": "Duong Duc Bao",
+    "gender": "Male",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Male -48kg"
+  },
+  {
+    "name": "Ahmad Nor Iman Aliff Bin Rakib",
+    "gender": "Male",
+    "delegation": "Malaysia",
+    "division": "S 16-40 Male -60kg"
+  },
+  {
+    "name": "Mohamad Shahrul hakim Bin Rosli",
+    "gender": "Male",
+    "delegation": "Malaysia",
+    "division": "S 16-40 Male -71kg"
+  },
+  {
+    "name": "Wassof Bin Rumijam",
+    "gender": "Male",
+    "delegation": "Malaysia",
+    "division": "S 16-40 Male -54kg"
+  },
+  {
+    "name": "Muhammad Mikail Ghazali Bin Zulfikar",
+    "gender": "Male",
+    "delegation": "Malaysia",
+    "division": "S 16-40 Male -57kg"
+  },
+  {
+    "name": "Nur Amisha Binti Azrilrizal",
+    "gender": "Female",
+    "delegation": "Malaysia",
+    "division": "S 16-40 Female -51kg"
+  },
+  {
+    "name": "Nur Bisyarah Altisya Binti Mohd Zairee",
+    "gender": "Female",
+    "delegation": "Malaysia",
+    "division": "S 16-40 Female -57kg"
+  },
+  {
+    "name": "Islay Erika Bomogao",
+    "gender": "Female",
+    "delegation": "Philippines",
+    "division": "S 16-40 Female -45kg"
+  },
+  {
+    "name": "Narongchai Chaithong",
+    "gender": "Male",
+    "delegation": "Thailand",
+    "division": "S 16-40 Male -71kg"
+  },
+  {
+    "name": "Mr Chembone",
+    "gender": "Male",
+    "delegation": "Lao People's Democratic Republic",
+    "division": "S 16-40 Male -51kg"
+  },
+  {
+    "name": "Stevannie Rejune Christia",
+    "gender": "Female",
+    "delegation": "Indonesia",
+    "division": "S 16-40 Female -51kg"
+  },
+  {
+    "name": "Mathew Blane Comicho",
+    "gender": "Male",
+    "delegation": "Philippines",
+    "division": "S 16-40 Male -67kg"
+  },
+  {
+    "name": "Eunicka Kaye Costales",
+    "gender": "Female",
+    "delegation": "Philippines",
+    "division": "S 16-40 Female -57kg"
+  },
+  {
+    "name": "Dao Dai Hai",
+    "gender": "Male",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Male -60kg"
+  },
+  {
+    "name": "Hoa Dinh Thi",
+    "gender": "Female",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Female -54kg"
+  },
+  {
+    "name": "Nguyen Doan Long",
+    "gender": "Male",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Male -67kg"
+  },
+  {
+    "name": "Huai Elizabeth Cing Za",
+    "gender": "Female",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Female -60kg"
+  },
+  {
+    "name": "Ejay Galendez",
+    "gender": "Male",
+    "delegation": "Philippines",
+    "division": "S 16-40 Male -60kg"
+  },
+  {
+    "name": "Cheryl Gwa WEI YING",
+    "gender": "Female",
+    "delegation": "Singapore",
+    "division": "S 16-40 Female -48kg"
+  },
+  {
+    "name": "Mai Hoang Khanh",
+    "gender": "Female",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Female -45kg"
+  },
+  {
+    "name": "Shing Htang Khui",
+    "gender": "Male",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Male -51kg"
+  },
+  {
+    "name": "Thongchai Huanak",
+    "gender": "Male",
+    "delegation": "Thailand",
+    "division": "S 16-40 Male -54kg"
+  },
+  {
+    "name": "Indra Surya Ondeng Hutagulung",
+    "gender": "Male",
+    "delegation": "Indonesia",
+    "division": "S 16-40 Male -63.5kg"
+  },
+  {
+    "name": "Dang Huynh Hai",
+    "gender": "Male",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Male -51kg"
+  },
+  {
+    "name": "Tyron Jamborillo",
+    "gender": "Male",
+    "delegation": "Philippines",
+    "division": "S 16-40 Male -45kg"
+  },
+  {
+    "name": "Texas Jeremy Lo",
+    "gender": "Male",
+    "delegation": "Malaysia",
+    "division": "S 16-40 Male -63.5kg"
+  },
+  {
+    "name": "Aksone Kamkeo",
+    "gender": "Female",
+    "delegation": "Lao People's Democratic Republic",
+    "division": "S 16-40 Female -45kg"
+  },
+  {
+    "name": "Kaewrudee Kamtakrapoom",
+    "gender": "Female",
+    "delegation": "Thailand",
+    "division": "S 16-40 Female -57kg"
+  },
+  {
+    "name": "Sone Kaung Pyae",
+    "gender": "Male",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Male -48kg"
+  },
+  {
+    "name": "Souliya Keopaseuth",
+    "gender": "Male",
+    "delegation": "Lao People's Democratic Republic",
+    "division": "S 16-40 Male -63.5kg"
+  },
+  {
+    "name": "Jeryl Khoo",
+    "gender": "Male",
+    "delegation": "Singapore",
+    "division": "S 16-40 Male -71kg"
+  },
+  {
+    "name": "Htet Kyaw Lin",
+    "gender": "Male",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Male -75kg"
+  },
+  {
+    "name": "Tun Kyaw Swar",
+    "gender": "Male",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Male -67kg"
+  },
+  {
+    "name": "Ariel Lee Lampacan",
+    "gender": "Male",
+    "delegation": "Philippines",
+    "division": "S 16-40 Male -57kg"
+  },
+  {
+    "name": "Bui Hai Linh",
+    "gender": "Female",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Female -51kg"
+  },
+  {
+    "name": "Adisty Gracelia Lularoh",
+    "gender": "Female",
+    "delegation": "Indonesia",
+    "division": "S 16-40 Female -57kg"
+  },
+  {
+    "name": "Allysa Kyllie Mallari",
+    "gender": "Female",
+    "delegation": "Philippines",
+    "division": "S 16-40 Female -54kg"
+  },
+  {
+    "name": "Win Mar Lar",
+    "gender": "Female",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Female -54kg"
+  },
+  {
+    "name": "Oo May Thing Zar",
+    "gender": "Female",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Female -48kg"
+  },
+  {
+    "name": "Chalongchai Minindi",
+    "gender": "Male",
+    "delegation": "Thailand",
+    "division": "S 16-40 Male -51kg"
+  },
+  {
+    "name": "Floryvic Montero",
+    "gender": "Female",
+    "delegation": "Philippines",
+    "division": "S 16-40 Female -51kg"
+  },
+  {
+    "name": "Minh Nguyen Hoang",
+    "gender": "Male",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Male -57kg"
+  },
+  {
+    "name": "Son Nguyen Hoang",
+    "gender": "Male",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Male -45kg"
+  },
+  {
+    "name": "Tung Nguyen Thanh",
+    "gender": "Male",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Male -75kg"
+  },
+  {
+    "name": "Chieu Nguyen Thi",
+    "gender": "Female",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Female -57kg"
+  },
+  {
+    "name": "Arissara Noon-Eiad",
+    "gender": "Female",
+    "delegation": "Thailand",
+    "division": "S 16-40 Female -45kg"
+  },
+  {
+    "name": "Su Latt Nyein Chan",
+    "gender": "Female",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Female -51kg"
+  },
+  {
+    "name": "Soe Ohmar",
+    "gender": "Female",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Female -57kg"
+  },
+  {
+    "name": "Man Pham Ngoc",
+    "gender": "Male",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Male -63.5kg"
+  },
+  {
+    "name": "Supphanat Phetrak",
+    "gender": "Male",
+    "delegation": "Thailand",
+    "division": "S 16-40 Male -48kg"
+  },
+  {
+    "name": "Huynh Hoang Phi",
+    "gender": "Male",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Male -54kg"
+  },
+  {
+    "name": "Nguyen Thi Phuong Hau",
+    "gender": "Female",
+    "delegation": "Vietnam",
+    "division": "S 16-40 Female -60kg"
+  },
+  {
+    "name": "Jan Brix Ramiscal",
+    "gender": "Male",
+    "delegation": "Philippines",
+    "division": "S 16-40 Male -48kg"
+  },
+  {
+    "name": "Nurul Rasyidah",
+    "gender": "Female",
+    "delegation": "Malaysia",
+    "division": "S 16-40 Female -60kg"
+  },
+  {
+    "name": "Insyad Rumijam",
+    "gender": "Male",
+    "delegation": "Malaysia",
+    "division": "S 16-40 Male -51kg"
+  },
+  {
+    "name": "Areeya Sahot",
+    "gender": "Female",
+    "delegation": "Thailand",
+    "division": "S 16-40 Female -60kg"
+  },
+  {
+    "name": "Krittanu Saladkaew",
+    "gender": "Male",
+    "delegation": "Thailand",
+    "division": "S 16-40 Male -45kg"
+  },
+  {
+    "name": "Thotsaphon Saophanao",
+    "gender": "Male",
+    "delegation": "Thailand",
+    "division": "S 16-40 Male -75kg"
+  },
+  {
+    "name": "Ruthaiphan Sapmanee",
+    "gender": "Male",
+    "delegation": "Thailand",
+    "division": "S 16-40 Male -63.5kg"
+  },
+  {
+    "name": "Tit Saw Ah",
+    "gender": "Male",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Male -57kg"
+  },
+  {
+    "name": "Ye Linn Saw Khaing",
+    "gender": "Male",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Male -54kg"
+  },
+  {
+    "name": "Moe Saw Myat",
+    "gender": "Male",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Male -45kg"
+  },
+  {
+    "name": "Thongbang Seuaphom",
+    "gender": "Male",
+    "delegation": "Lao People's Democratic Republic",
+    "division": "S 16-40 Male -57kg"
+  },
+  {
+    "name": "Suphakon Sirilun",
+    "gender": "Male",
+    "delegation": "Thailand",
+    "division": "S 16-40 Male -57kg"
+  },
+  {
+    "name": "Loukket Sithong",
+    "gender": "Female",
+    "delegation": "Lao People's Democratic Republic",
+    "division": "S 16-40 Female -48kg"
+  },
+  {
+    "name": "Latxasak Souliyavong",
+    "gender": "Male",
+    "delegation": "Lao People's Democratic Republic",
+    "division": "S 16-40 Male -67kg"
+  },
+  {
+    "name": "Soukan Taipanyavong",
+    "gender": "Male",
+    "delegation": "Lao People's Democratic Republic",
+    "division": "S 16-40 Male -60kg"
+  },
+  {
+    "name": "Niracha Tangchio",
+    "gender": "Female",
+    "delegation": "Thailand",
+    "division": "S 16-40 Female -48kg"
+  },
+  {
+    "name": "Nirawan Tangchio",
+    "gender": "Female",
+    "delegation": "Thailand",
+    "division": "S 16-40 Female -54kg"
+  },
+  {
+    "name": "Ginny Teo",
+    "gender": "Female",
+    "delegation": "Singapore",
+    "division": "S 16-40 Female -54kg"
+  },
+  {
+    "name": "Terrence Teo",
+    "gender": "Male",
+    "delegation": "Singapore",
+    "division": "S 16-40 Male -75kg"
+  },
+  {
+    "name": "Khampha Theuasavang",
+    "gender": "Male",
+    "delegation": "Lao People's Democratic Republic",
+    "division": "S 16-40 Male -54kg"
+  },
+  {
+    "name": "Abdolmalek Thingnamrob",
+    "gender": "Male",
+    "delegation": "Thailand",
+    "division": "S 16-40 Male -67kg"
+  },
+  {
+    "name": "Aung Tun Min",
+    "gender": "Male",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Male -71kg"
+  },
+  {
+    "name": "A'mmarul Shafiq Ubaidillah",
+    "gender": "Male",
+    "delegation": "Malaysia",
+    "division": "S 16-40 Male -75kg"
+  },
+  {
+    "name": "Eva Anatasia Warren",
+    "gender": "Female",
+    "delegation": "Malaysia",
+    "division": "S 16-40 Female -48kg"
+  },
+  {
+    "name": "LJ Rafael Yasay",
+    "gender": "Male",
+    "delegation": "Philippines",
+    "division": "S 16-40 Male -51kg"
+  },
+  {
+    "name": "Chan Yay",
+    "gender": "Male",
+    "delegation": "Myanmar Muaythai",
+    "division": "S 16-40 Male -63.5kg"
+  }
+]
