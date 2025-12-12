@@ -28,3 +28,4 @@
 - [День 26. Встроить локальную LLM в приложение](https://github.com/longdog/ai-advent-4/tree/day25/)
 - [День 27. Локальная LLM на VPS](https://github.com/longdog/ai-advent-4/tree/day27/)
 - [День 28. Оптимизация и адаптация локальной LLM](https://github.com/longdog/ai-advent-4/tree/day28/)
+- [День 29. Локальный аналитик](https://github.com/longdog/ai-advent-4/tree/day29/)
