@@ -1,8 +1,79 @@
 import { MemorySaver } from "@langchain/langgraph"
 import { ChatOpenAI } from "@langchain/openai"
-import { createAgent, ReactAgent } from "langchain"
-const system = `Ты - мой персональный ассистент.
+import { createAgent, createMiddleware, ReactAgent } from "langchain"
+import { calendarTool } from "../tools/calend"
+import { dateTool } from "../tools/date"
+import { fridgeTool } from "../tools/fridge"
+const systemPrompt = `Ты - мой персональный ассистент.
+Меня зовут Денис. Я специалист с мировым именем в области ИИ.
+У меня есть жена Ольга, она увлекается вышиванием и дочка Алиса, она занимается синхронным плаванием.
+Ты помогаешь мне: 
+- вести ежедневные дела, 
+- следить за расписанием, 
+- отслеживать наличие продуктов в холодильнике
+- даешь советы на основе моих интересов и интересов моей семьи.
+ПРАВИЛА:
+- Приветсвтуй меня по имени
+- Проверяй дату и время с помощью функции current_date_time и в приветсвии укажи текущее время
+- Проверяй мое расписание с помощью функции my_calendar
+- Проверяй наличие продуктов в холодильнике с помощью функции my_fridge
 `
+
+const modelMonitoringMiddleware = createMiddleware({
+  name: "ModelMonitoringMiddleware",
+  wrapModelCall: (request, handler) => {
+    console.log(`Executing model: ${request}`)
+    try {
+      const result = handler(request)
+      console.log("Model completed successfully")
+      return result
+    } catch (e) {
+      console.log(`Model failed: ${e}`)
+      throw e
+    }
+  },
+})
+
+const toolMonitoringMiddleware = createMiddleware({
+  name: "ToolMonitoringMiddleware",
+  wrapToolCall: (request, handler) => {
+    console.log(`Executing tool: ${request.toolCall.name}`)
+    console.log(`Arguments: ${JSON.stringify(request.toolCall.args)}`)
+    try {
+      const result = handler(request)
+      console.log("Tool completed successfully")
+      return result
+    } catch (e) {
+      console.log(`Tool failed: ${e}`)
+      throw e
+    }
+  },
+})
+
+const loggingMiddleware = createMiddleware({
+  name: "LoggingMiddleware",
+  beforeModel: state => {
+    console.log(`BEFORE----------`)
+    console.log(state)
+    return
+  },
+  afterModel: state => {
+    console.log(`AFTER----------`)
+    console.log(state)
+    return
+  },
+
+  beforeAgent: state => {
+    console.log(`BEFORE AGENT----------`)
+    console.log(state)
+    return
+  },
+  afterAgent: state => {
+    console.log(`AFTER AGENT----------`)
+    console.log(state)
+    return
+  },
+})
 
 export function createOpenAiClient() {
   const checkpointer = new MemorySaver()
@@ -15,7 +86,8 @@ export function createOpenAiClient() {
   const agent = createAgent({
     model,
     checkpointer,
-    systemPrompt: system,
+    systemPrompt,
+    tools: [fridgeTool, calendarTool, dateTool],
   })
   return agent
 }

@@ -139,8 +139,15 @@ Bun.serve({
       }
 
       sessionId = generateSessionId()
+      const aiResponse = (await openaiChat(llm, sessionId, "Привет!")) as string
 
-      return new Response("", {
+      // Prepare response with both messages
+      const messagesHtml = formatMessages(
+        [{ role: "assistant", content: aiResponse }],
+        false,
+      )
+
+      return new Response(messagesHtml, {
         headers: {
           "Content-Type": "text/html",
           "Set-Cookie": `session_id=${sessionId}; Path=/; HttpOnly; SameSite=Strict`,
