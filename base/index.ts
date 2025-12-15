@@ -1,11 +1,8 @@
 import MarkdownIt from "markdown-it"
-import { createOlamaClient, olamaChat } from "./models/local"
+import { createOpenAiClient, openaiChat } from "./models/openai"
 const md = MarkdownIt()
 
-const llmSummary = createOlamaClient()
-
-// In-memory storage for conversation chains (in a real app, you'd use a database)
-const conversationChains = new Map<string, any>()
+const llm = createOpenAiClient()
 
 // Helper function to generate a simple session ID
 function generateSessionId(): string {
@@ -103,8 +100,8 @@ Bun.serve({
       }
 
       // Get AI response using conversation chain with memory
-      const aiResponse = (await olamaChat(
-        llmSummary,
+      const aiResponse = (await openaiChat(
+        llm,
         sessionId,
         userMessage,
       )) as string
@@ -139,10 +136,6 @@ Bun.serve({
         if (sessionCookie) {
           sessionId = sessionCookie.split("=")[1] || null
         }
-      }
-
-      if (sessionId && conversationChains.has(sessionId)) {
-        conversationChains.delete(sessionId)
       }
 
       sessionId = generateSessionId()
