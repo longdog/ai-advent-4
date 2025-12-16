@@ -55,6 +55,7 @@ console.log("Starting server on http://localhost:5555")
 
 Bun.serve({
   port: 5555,
+  idleTimeout: 255,
   async fetch(req) {
     const url = new URL(req.url)
 
@@ -139,7 +140,11 @@ Bun.serve({
       }
 
       sessionId = generateSessionId()
-      const aiResponse = (await openaiChat(llm, sessionId, "Привет!")) as string
+      const aiResponse = (await openaiChat(
+        llm,
+        sessionId,
+        "Привет!, ожидай голосовой ввод",
+      )) as string
 
       // Prepare response with both messages
       const messagesHtml = formatMessages(
