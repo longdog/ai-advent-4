@@ -26,7 +26,7 @@ function formatMessages(
 ): string {
   if (messages.length === 0) {
     return `<div class="text-center text-gray-500 py-8">
-              <p>Start a conversation with the AI assistant</p>
+              <p>Никифор приветствует вас!</p>
             </div>`
   }
   const formAttribute = hideForm ? 'data-hide-form="true"' : ""
@@ -40,7 +40,7 @@ function formatMessages(
               </div>`
       } else {
         return `<div class="message ai-message" ${formAttribute}>
-                <div class="font-semibold mb-1">AI</div>
+                <div class="font-semibold mb-1">Никифор</div>
                 <div>${toMarkdown(escapedContent)}</div>
               </div>`
       }
@@ -140,15 +140,15 @@ Bun.serve({
       }
 
       sessionId = generateSessionId()
-      const aiResponse = (await openaiChat(
-        llm,
-        sessionId,
-        "Привет!, ожидай голосовой ввод",
-      )) as string
+      // const aiResponse = (await openaiChat(
+      //   llm,
+      //   sessionId,
+      //   "Привет!, ожидай голосовой ввод",
+      // )) as string
 
       // Prepare response with both messages
       const messagesHtml = formatMessages(
-        [{ role: "assistant", content: aiResponse }],
+        [{ role: "assistant", content: "Чего изволите?" }],
         false,
       )
 

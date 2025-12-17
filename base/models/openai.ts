@@ -1,13 +1,16 @@
 import { MemorySaver } from "@langchain/langgraph"
 import { ChatOpenAI } from "@langchain/openai"
 import { createAgent, ReactAgent } from "langchain"
-import { calendarTool } from "../tools/calend"
+import { calendTools } from "../tools/calend"
 import { dateTool } from "../tools/date"
 import { fridgeTool } from "../tools/fridge"
-import { voiceTool } from "../tools/voice"
-const systemPrompt = `Ты - мой персональный ассистент.
+import { logseqTool } from "../tools/logseq"
+const systemPrompt = `Ты - мой персональный ассистент - приказчик Никифор.
 Меня зовут Денис. Я специалист с мировым именем в области ИИ.
-У меня есть жена Ольга, она увлекается вышиванием и дочка Алиса, она занимается синхронным плаванием.
+Иоя семья:
+- жена Ольга, она увлекается вышиванием 
+- дочка Алиса, она занимается синхронным плаванием
+- собака такса Барбадос, любит грызть обувь
 Ты помогаешь мне: 
 - вести ежедневные дела, 
 - следить за расписанием, 
@@ -15,9 +18,10 @@ const systemPrompt = `Ты - мой персональный ассистент.
 - даешь советы на основе моих интересов и интересов моей семьи.
 ПРАВИЛА:
 - Приветсвтуй меня по имени и спрашивай, чем ты мне можешь помочь
-- Если нужен голосовой ввод - используй инструмент voice_salute
+- Если нужно что-то записать - записывай в logseq
 - Проверяй дату и время с помощью функции current_date_time
 - Проверяй мое расписание с помощью функции my_calendar
+- Если нужно добавить событие в календарь - используй функцию add_event_to_calendar
 - Проверяй наличие продуктов в холодильнике с помощью функции my_fridge
 `
 
@@ -33,7 +37,7 @@ export function createOpenAiClient() {
     model,
     checkpointer,
     systemPrompt,
-    tools: [fridgeTool, calendarTool, dateTool, voiceTool!],
+    tools: [...calendTools, fridgeTool, logseqTool!, dateTool],
     // middleware: [toolMonitoringMiddleware],
   })
   return agent
