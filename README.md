@@ -31,3 +31,4 @@
 - [День 29. Локальный аналитик](https://github.com/longdog/ai-advent-4/tree/day29/)
 - [День 30. Personalization](https://github.com/longdog/ai-advent-4/tree/day30/)
 - [День 31. Голосовой агент (Speech → LLM → Text)](https://github.com/longdog/ai-advent-4/tree/day31/)
+- [День 32. God Agent](https://github.com/longdog/ai-advent-4/tree/day32/)
